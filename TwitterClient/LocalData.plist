@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   LocalData.plist
+   TwitterClient
+
+   Created by Wang, Guoliang (Tony) on 4/11/17.
+   Copyright (c) 2017 com.rcholic. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>TwitterKey</key>
+        <string>PWCc8DMAYyEETbZRBtm6UcpzL</string>
+        <key>TwitterSecret</key>
+        <string>h5WG1TfkGS0QGNDK3dyLEe3GchBMWZqPivPIucAESPJrTlItw3</string>
+        <key>TwitterBaseUrl</key>
+        <string>https://api.twitter.com</string>
+    </dict>
+</plist>

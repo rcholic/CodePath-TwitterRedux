@@ -12,6 +12,7 @@ target 'TwitterClient' do
   pod 'SwiftyJSON'
   pod "PromiseKit", "~> 4.0"
   pod 'Alamofire', '~> 4.4'
+  pod 'OAuthSwift', '~> 1.1.0'
 
   target 'TwitterClientTests' do
     inherit! :search_paths

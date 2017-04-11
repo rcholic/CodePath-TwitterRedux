@@ -21,6 +21,10 @@
 		00FB66BA1E9D1873005D39B3 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB66B91E9D1873005D39B3 /* PromiseKit.framework */; };
 		00FB66BC1E9D1878005D39B3 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB66BB1E9D1878005D39B3 /* SwiftyJSON.framework */; };
 		00FB66BE1E9D18DF005D39B3 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB66BD1E9D18DF005D39B3 /* TwitterClient.swift */; };
+		00FB66C01E9D467A005D39B3 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB66BF1E9D467A005D39B3 /* GlobalSettings.swift */; };
+		00FB66C21E9D46CA005D39B3 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00FB66C11E9D46CA005D39B3 /* OAuthSwift.framework */; };
+		00FB66C41E9D47E3005D39B3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FB66C31E9D47E3005D39B3 /* DataManager.swift */; };
+		00FB66C61E9D481B005D39B3 /* LocalData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00FB66C51E9D481B005D39B3 /* LocalData.plist */; };
 		081AED33FFE4386844E9D288 /* Pods_TwitterClientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 385503ACD8A64F06F664FB8F /* Pods_TwitterClientUITests.framework */; };
 		75A189A5AA80D431CF8DF7F7 /* Pods_TwitterClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FD4E20AF19BAA4B9F98066 /* Pods_TwitterClientTests.framework */; };
 		C711117FCD5ACEFE7920A174 /* Pods_TwitterClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1F437883192C111B2D58E3 /* Pods_TwitterClient.framework */; };
@@ -65,6 +69,10 @@
 		00FB66B91E9D1873005D39B3 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/TwitterClient-fgzmnbpmifrdpcflyvhkggfswurf/Build/Products/Debug-iphonesimulator/PromiseKit/PromiseKit.framework"; sourceTree = "<group>"; };
 		00FB66BB1E9D1878005D39B3 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/TwitterClient-fgzmnbpmifrdpcflyvhkggfswurf/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		00FB66BD1E9D18DF005D39B3 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		00FB66BF1E9D467A005D39B3 /* GlobalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
+		00FB66C11E9D46CA005D39B3 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/TwitterClient-fgzmnbpmifrdpcflyvhkggfswurf/Build/Products/Debug-iphonesimulator/OAuthSwift/OAuthSwift.framework"; sourceTree = "<group>"; };
+		00FB66C31E9D47E3005D39B3 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		00FB66C51E9D481B005D39B3 /* LocalData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LocalData.plist; sourceTree = "<group>"; };
 		2B1F437883192C111B2D58E3 /* Pods_TwitterClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		385503ACD8A64F06F664FB8F /* Pods_TwitterClientUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClientUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A35D106DB69EBCFDECAE2E5 /* Pods-TwitterClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClientTests/Pods-TwitterClientTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00FB66C21E9D46CA005D39B3 /* OAuthSwift.framework in Frameworks */,
 				00FB66BC1E9D1878005D39B3 /* SwiftyJSON.framework in Frameworks */,
 				00FB66BA1E9D1873005D39B3 /* PromiseKit.framework in Frameworks */,
 				00FB66B81E9D186E005D39B3 /* Alamofire.framework in Frameworks */,
@@ -143,6 +152,9 @@
 				00FB668C1E9D16C7005D39B3 /* Info.plist */,
 				00FB66AE1E9D17D9005D39B3 /* TwitterClient-Bridging-Header.h */,
 				00FB66BD1E9D18DF005D39B3 /* TwitterClient.swift */,
+				00FB66BF1E9D467A005D39B3 /* GlobalSettings.swift */,
+				00FB66C31E9D47E3005D39B3 /* DataManager.swift */,
+				00FB66C51E9D481B005D39B3 /* LocalData.plist */,
 			);
 			path = TwitterClient;
 			sourceTree = "<group>";
@@ -168,6 +180,7 @@
 		5C06CACCE5FEF963794C486C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00FB66C11E9D46CA005D39B3 /* OAuthSwift.framework */,
 				00FB66BB1E9D1878005D39B3 /* SwiftyJSON.framework */,
 				00FB66B91E9D1873005D39B3 /* PromiseKit.framework */,
 				00FB66B71E9D186E005D39B3 /* Alamofire.framework */,
@@ -313,6 +326,7 @@
 			files = (
 				00FB668B1E9D16C7005D39B3 /* LaunchScreen.storyboard in Resources */,
 				00FB66881E9D16C7005D39B3 /* Assets.xcassets in Resources */,
+				00FB66C61E9D481B005D39B3 /* LocalData.plist in Resources */,
 				00FB66861E9D16C7005D39B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +491,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00FB66831E9D16C7005D39B3 /* ViewController.swift in Sources */,
+				00FB66C41E9D47E3005D39B3 /* DataManager.swift in Sources */,
+				00FB66C01E9D467A005D39B3 /* GlobalSettings.swift in Sources */,
 				00FB66BE1E9D18DF005D39B3 /* TwitterClient.swift in Sources */,
 				00FB66811E9D16C7005D39B3 /* AppDelegate.swift in Sources */,
 			);
