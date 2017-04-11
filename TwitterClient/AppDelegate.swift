@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TwitterClient
 //
-//  Created by Wang, Guoliang (Tony) on 4/11/17.
+//  Created by Wang, Tony on 4/11/17.
 //  Copyright © 2017 com.rcholic. All rights reserved.
 //
 
