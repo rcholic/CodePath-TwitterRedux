@@ -20,17 +20,17 @@ struct DataManager {
         return docDir
     }
     
-    var dataFilePath: String? {
+    private var dataFilePath: String? {
         guard let docPath = self.docDirectory else { return nil }
         return docPath.appending("/\(dataFileName).plist")
     }
     
-    var dict: NSMutableDictionary? {
+    private var dict: NSMutableDictionary? {
         guard let filePath = self.dataFilePath else { return nil }
         return NSMutableDictionary(contentsOfFile: filePath)
     }
     
-    let fileManager = FileManager.default
+    private let fileManager = FileManager.default
     
     fileprivate init() {
         
@@ -43,7 +43,7 @@ struct DataManager {
             if let bundlePath = Bundle.main.path(forResource: dataFileName, ofType: "plist") {
                 do {
                     try fileManager.copyItem(atPath: bundlePath, toPath: path)
-                    NSLog("Copied Data.plist to Document directory")
+                    //                    NSLog("Copied LocalData.plist to Document directory")
                 } catch let error {
                     NSLog("Error in copying Data.plist: \(error)")
                 }
@@ -52,26 +52,26 @@ struct DataManager {
         }
     }
     
-    func save(_ value: Any, for key: String) -> Bool {
+    func save(_ value: Any, for key: DataKey) -> Bool {
         
         guard let dict = dict else { return false }
         
-        dict.setObject(value, forKey: key as NSCopying)
+        dict.setObject(value, forKey: key.rawValue as NSCopying)
         dict.write(toFile: dataFilePath!, atomically: true)
         
         return true
     }
     
-    func delete(key: String) -> Bool {
+    func delete(key: DataKey) -> Bool {
         
         guard let dict = dict else { return false }
-        dict.removeObject(forKey: key)
+        dict.removeObject(forKey: key.rawValue)
         return true
     }
     
-    func retrieve(for key: String) -> Any? {
-        guard let dict = dict else { return false }
+    func retrieve(for key: DataKey) -> Any? {
+        guard let dict = dict else { return nil }
         
-        return dict.object(forKey: key)
+        return dict.object(forKey: key.rawValue)
     }
 }

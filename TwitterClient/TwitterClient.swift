@@ -9,13 +9,9 @@
 import UIKit
 import BDBOAuth1Manager
 
-let twittercConsumerKey = "PWCc8DMAYyEETbZRBtm6UcpzL"
-let twitterConsumerSecret = "h5WG1TfkGS0QGNDK3dyLEe3GchBMWZqPivPIucAESPJrTlItw3"
-let twitterBaseURL = URL(string: "https://api.twitter.com")
-
 class TwitterClient: BDBOAuth1RequestOperationManager {
     
-    public static let shared = TwitterClient(url: twitterBaseURL!, consumerKey: twittercConsumerKey, consumerSecret: twitterConsumerSecret)
+    public static let shared = TwitterClient(url: TWT_BASE_URL, consumerKey: TWT_CONSUMER_KEY, consumerSecret: TWT_CONSUMER_SECRET)
     
     let url: URL
     let key: String

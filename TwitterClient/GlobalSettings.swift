@@ -8,4 +8,18 @@
 
 import Foundation
 
-public let URL_SCHEME_ID = "swifty-oauth"
+internal enum DataKey: String {
+    
+    case requestToken = "RequestToken"
+    case accessToken = "AccessToken"
+}
+
+public let TWITTER_CALLBACK_URL = "swifty-oauth://oauth-callback/twitter"
+
+public let OAUTH_SCHEME_ID = "swifty-oauth"
+
+public let TWT_CONSUMER_KEY = "PWCc8DMAYyEETbZRBtm6UcpzL"
+
+public let TWT_CONSUMER_SECRET = "h5WG1TfkGS0QGNDK3dyLEe3GchBMWZqPivPIucAESPJrTlItw3"
+
+public let TWT_BASE_URL = URL(string: "https://api.twitter.com")!

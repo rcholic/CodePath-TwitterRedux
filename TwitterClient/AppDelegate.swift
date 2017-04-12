@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import OAuthSwift
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("handling url: \(url.host)")
+        print("url query: \(url.query)")
+        
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        TwitterClient.shared.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
+            
+            print("access token: \(accessToken?.token)")
+            // verify if it works by fetching home timeline tweets
+            TwitterClient.shared.get("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation, response) in
+                print("response: \(response)")
+            }, failure: { (failedOperation: AFHTTPRequestOperation?, error: Error) in
+                print("error: \(error.localizedDescription)")
+            })
+            
+            
+        }, failure: { (error: Error?) in
+            print("error in getting access token: \(error)")
+        })
+        
+        /*
+        if (url.host == "oauth-callback/twitter") {
+            // swifty-oauth://oauth-callback/twitter
+            OAuthSwift.handle(url: url)
+        }
+ */
         return true
     }
 
