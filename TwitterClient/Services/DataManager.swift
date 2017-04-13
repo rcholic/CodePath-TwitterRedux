@@ -66,6 +66,7 @@ struct DataManager {
         
         guard let dict = dict else { return false }
         dict.removeObject(forKey: key.rawValue)
+        dict.write(toFile: dataFilePath!, atomically: true)
         return true
     }
     

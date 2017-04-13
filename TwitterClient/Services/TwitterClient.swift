@@ -29,18 +29,15 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /*
-    private lazy var twitterBaseURL: URL = {
-        let baseUrl: String = DataManager.shared.retrieve(for: "TwitterBaseUrl") as? String ?? "https://api.twitter.com"
-        return URL(string: baseUrl)!
-    }()
+    internal func isSignedIn() -> Bool {
+        return accessToken.characters.count > 0
+    }
     
-    private lazy var twittercConsumerKey: String = {
-        return DataManager.shared.retrieve(for: "TwitterKey") as? String ?? ""
-    }()
-    
-    private lazy var twitterConsumerSecret: String = {
-        return DataManager.shared.retrieve(for: "TwitterKey") as? String ?? ""
-    }()
-    */
+    private var accessToken: String {
+        get {
+            guard let token = DataManager.shared.retrieve(for: DataKey.accessToken) else { return "" }
+            print("saved access token: \(token)")
+            return token as! String
+        }
+    }
 }

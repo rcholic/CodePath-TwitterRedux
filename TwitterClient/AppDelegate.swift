@@ -9,6 +9,8 @@
 import UIKit
 import OAuthSwift
 import BDBOAuth1Manager
+import SwiftyJSON
+import ObjectMapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,10 +31,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         TwitterClient.shared.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
             
-            print("access token: \(accessToken?.token)")
+            if let token = accessToken?.token {
+                DataManager.shared.save(token as! String, for: DataKey.accessToken)
+                print("saved token: \(token)")
+            }
+            
+            // get user screen name
+            
+            TwitterClient.shared.get("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: AFHTTPRequestOperation, response) in
+                let json = JSON(response)
+                let twtUser = Mapper<TwitterUser>().map(JSON: json.dictionaryObject!)
+                if let screenName = twtUser?.screenName {
+                    _ = DataManager.shared.save(screenName, for: DataKey.screenName)
+                }
+                _ = DataManager.shared.save(Date(), for: DataKey.lastLogin) // last login date
+                
+            }, failure: { (failedOperation: AFHTTPRequestOperation?, error: Error) in
+                print("error: \(error)")
+            })
+            
+
             // verify if it works by fetching home timeline tweets
             TwitterClient.shared.get("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation, response) in
-                print("response: \(response)")
+//                print("response: \(response)")
+                
+                let json = JSON(response)
+                
+                if let tweets = Mapper<Tweet>().mapArray(JSONObject: json.arrayObject) {
+                    for tweet in tweets {
+                        print("tweet.user: \(tweet.user?.name)")
+                        print("tweet created at: \(tweet.createdAt)")
+                    }
+                }
+                
+                
             }, failure: { (failedOperation: AFHTTPRequestOperation?, error: Error) in
                 print("error: \(error.localizedDescription)")
             })

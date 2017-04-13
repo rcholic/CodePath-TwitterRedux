@@ -9,9 +9,10 @@
 import Foundation
 
 internal enum DataKey: String {
-    
+    case screenName = "ScreenName"
     case requestToken = "RequestToken"
     case accessToken = "AccessToken"
+    case lastLogin = "LastLogin"
 }
 
 public let TWITTER_CALLBACK_URL = "swifty-oauth://oauth-callback/twitter"
