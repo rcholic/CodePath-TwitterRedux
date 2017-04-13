@@ -8,7 +8,11 @@
 
 import UIKit
 import BDBOAuth1Manager
-import Alamofire
+//import Alamofire
+import ObjectMapper
+import SwiftyJSON
+
+// example: https://github.com/tejen/codepath-twitter/blob/master/Twitter/Twitter/TwitterClient.swift
 
 class HomeViewController: UIViewController {
 
@@ -41,17 +45,12 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func didTapGetTweets(_ sender: Any) {
-        if let accessToken = DataManager.shared.retrieve(for: DataKey.accessToken) as? String {
-            
-            let headers = [
-                "Authorization": "Basic \(accessToken)",
-                "Accept": "application/json"
-            ]
-            Alamofire.request("https://api.twitter.com/1.1/statuses/home_timeline.json", headers: headers).responseJSON { response in
-                print("response: \(response)")
-            }
+        TwitterClient.shared.getHomeTimeLine(success: { (tweets) in
+            print("received tweets: \(tweets)")
+        }) { (error) in
+            print("error: \(error)")
         }
-
+        
     }
     
     

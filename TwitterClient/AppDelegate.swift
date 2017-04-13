@@ -32,54 +32,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TwitterClient.shared.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
             
             if let token = accessToken?.token {
-                DataManager.shared.save(token as! String, for: DataKey.accessToken)
-                print("saved token: \(token)")
+                _ = DataManager.shared.save(token, for: DataKey.accessToken)
+                _ = DataManager.shared.save(Date(), for: DataKey.lastLogin) // last login date
             }
             
-            // get user screen name
-            
-            TwitterClient.shared.get("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: AFHTTPRequestOperation, response) in
-                let json = JSON(response)
-                let twtUser = Mapper<TwitterUser>().map(JSON: json.dictionaryObject!)
+            TwitterClient.shared.retrieveCurrentUser(success: { (twtUser) in
                 if let screenName = twtUser?.screenName {
                     _ = DataManager.shared.save(screenName, for: DataKey.screenName)
                 }
-                _ = DataManager.shared.save(Date(), for: DataKey.lastLogin) // last login date
-                
-            }, failure: { (failedOperation: AFHTTPRequestOperation?, error: Error) in
+            }, failure: { (error) in
                 print("error: \(error)")
             })
-            
-
-            // verify if it works by fetching home timeline tweets
-            TwitterClient.shared.get("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation, response) in
-//                print("response: \(response)")
-                
-                let json = JSON(response)
-                
-                if let tweets = Mapper<Tweet>().mapArray(JSONObject: json.arrayObject) {
-                    for tweet in tweets {
-                        print("tweet.user: \(tweet.user?.name)")
-                        print("tweet created at: \(tweet.createdAt)")
-                    }
-                }
-                
-                
-            }, failure: { (failedOperation: AFHTTPRequestOperation?, error: Error) in
-                print("error: \(error.localizedDescription)")
-            })
-            
             
         }, failure: { (error: Error?) in
             print("error in getting access token: \(error)")
         })
-        
-        /*
-        if (url.host == "oauth-callback/twitter") {
-            // swifty-oauth://oauth-callback/twitter
-            OAuthSwift.handle(url: url)
-        }
- */
+
         return true
     }
 
