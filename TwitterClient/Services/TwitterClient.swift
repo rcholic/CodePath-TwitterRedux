@@ -11,6 +11,8 @@ import BDBOAuth1Manager
 import SwiftyJSON
 import ObjectMapper
 
+// authorizing requests: https://dev.twitter.com/oauth/overview/authorizing-requests
+
 class TwitterClient: BDBOAuth1RequestOperationManager {
     
     public static let shared = TwitterClient(url: TWT_BASE_URL, consumerKey: TWT_CONSUMER_KEY, consumerSecret: TWT_CONSUMER_SECRET)
