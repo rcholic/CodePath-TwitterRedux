@@ -42,7 +42,12 @@ class TweetView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        initPhase2()
+//        initPhase2()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        bindContent(tweet)
     }
     
     private func initPhase2() {

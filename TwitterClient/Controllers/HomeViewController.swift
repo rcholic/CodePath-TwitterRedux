@@ -13,6 +13,7 @@ import ObjectMapper
 import SwiftyJSON
 
 // example: https://github.com/tejen/codepath-twitter/blob/master/Twitter/Twitter/TwitterClient.swift
+// assignment: https://courses.codepath.com/courses/intro_to_ios/unit/3#!assignment
 
 class HomeViewController: UIViewController {
 
@@ -136,6 +137,12 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("did select row: \(indexPath.row)")
+        
+        if let targetVC = self.storyboard?.instantiateViewController(withIdentifier: "TweetDetailVC") as? TweetDetailViewController {
+            targetVC.tweet = tweets[indexPath.row]
+            self.navigationController?.pushViewController(targetVC, animated: true)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
