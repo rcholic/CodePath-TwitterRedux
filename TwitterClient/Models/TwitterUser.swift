@@ -20,7 +20,7 @@ class TwitterUser: BaseJsonModel {
     override func mapping(map: Map) {
         name <- map["name"]
         screenName <- map["screen_name"]
-        profileImgUrl <- (map["profile_image_url_https"], URLTransform())
+        profileImgUrl <- (map["profile_image_url"], URLTransform()) // profile_image_url_https
         tagline <- map["description"]
         followersCount <- map["followers_count"]
         aboutMeUrl <- (map["url"], URLTransform())

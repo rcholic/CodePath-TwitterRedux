@@ -18,11 +18,12 @@ import ObjectMapper
 // https://dev.twitter.com/rest/reference/get/statuses/home_timeline
 class Tweet: BaseJsonModel {
     
+    var id: String?
     var text: String?
     var createdAt: Date?
     var retweetCount: Int? = 0
     var isRetweeted: Bool = false
-    var user: TwitterUser? = nil
+    var author: TwitterUser? = nil
     var favoritesCount: Int? = 0
     
     override func mapping(map: Map) {
@@ -40,12 +41,13 @@ class Tweet: BaseJsonModel {
         //            return dateFormatter.string(from: value!)
         //        }
         
+        id <- map["id_str"]
         text <- map["text"]
         // "Wed Mar 03 19:37:35 +0000 2010"
-        createdAt <- (map["created_at"], CustomDateFormatTransform(formatString: "EEE MM dd HH:mm:ss.ssZ YYYY")) // DateTransform()
+        createdAt <- (map["created_at"], CustomDateFormatTransform(formatString: "EEE MMM d HH:mm:ss Z y")) // DateTransform()
         retweetCount <- map["retweet_count"]
         isRetweeted <- map["retweeted"]
-        user <- map["user"]
+        author <- map["user"]
         favoritesCount <- map["favourites_count"]
     }
     

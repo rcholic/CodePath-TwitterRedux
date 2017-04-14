@@ -18,6 +18,13 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var loginButton: UIBarButtonItem!
     @IBOutlet weak var composeButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
+    
+    fileprivate let refreshControl = UIRefreshControl()
+    let cellIdentifier = "TweetCell"
+    
+    var curUser: TwitterUser? = nil
+    var tweets: [Tweet] = []
     
     private var isLoggedIn: Bool = false {
         didSet {
@@ -36,17 +43,38 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initPhase2()
+        setupView()
+    }
+    
+    private func setupView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        refreshControl.addTarget(self, action: #selector(self.didTapGetTweets(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        tableView.tableFooterView = UIView() // don't show empty cells
+        
+        let cellNib = UINib(nibName: "TweetCell", bundle: Bundle.main)
+        tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
     }
     
     private func initPhase2() {
         isLoggedIn = TwitterClient.shared.isSignedIn()
+        if let userJsonStr = DataManager.shared.retrieve(for: DataKey.twitterUser) as? String {
+            curUser = Mapper<TwitterUser>().map(JSONString: userJsonStr)
+//            print("curUser: \(curUser?.name)")
+        }
     }
     
     @IBAction func didTapGetTweets(_ sender: Any) {
         TwitterClient.shared.getHomeTimeLine(success: { (tweets) in
-            print("received tweets: \(tweets)")
+//            print("received tweets: \(tweets)")
+            self.refreshControl.endRefreshing()
+            self.tweets = tweets
+            self.tableView.reloadData()
         }) { (error) in
             print("error: \(error)")
         }
@@ -59,9 +87,13 @@ class HomeViewController: UIViewController {
         if TwitterClient.shared.isSignedIn() {
             // log out
             TwitterClient.shared.requestSerializer.removeAccessToken()
+            TwitterClient.shared.deauthorize()
             _ = DataManager.shared.delete(key: DataKey.accessToken)
             isLoggedIn = false
         } else {
+            
+//            TwitterClient2.shared.login()
+            
             // login user
             TwitterClient.shared.fetchRequestToken(
                 withPath: "oauth/request_token",
@@ -79,10 +111,31 @@ class HomeViewController: UIViewController {
             }) { (error: Error?) in
                 print("error: \(error)")
             }
-            
         }
-        
+    }
+}
+
+extension HomeViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TweetCell
+        cell.tweet = tweets[indexPath.row]
+        
+        return cell
+    }
+}
 
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("did select row: \(indexPath.row)")
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

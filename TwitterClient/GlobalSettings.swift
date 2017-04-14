@@ -9,7 +9,8 @@
 import Foundation
 
 internal enum DataKey: String {
-    case screenName = "ScreenName"
+    case twitterUser = "TwitterUser"
+//    case screenName = "ScreenName"
     case requestToken = "RequestToken"
     case accessToken = "AccessToken"
     case lastLogin = "LastLogin"

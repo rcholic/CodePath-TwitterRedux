@@ -62,7 +62,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     
     // MARK: get home time lines
     internal func getHomeTimeLine(maxId: Int? = nil, success: @escaping ([Tweet]) -> Void, failure: @escaping (Error?) -> Void) {
-        var params = ["count": 10]
+        var params = ["count": 20]
         if let max = maxId {
             params["max_id"] = max
         }
@@ -74,7 +74,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             var results: [Tweet] = []
             if let tweets = Mapper<Tweet>().mapArray(JSONObject: json.arrayObject) {
                 for tweet in tweets {
-                    print("tweet.user: \(tweet.user?.name)")
+                    print("tweet.user: \(tweet.author?.name)")
                     print("tweet created at: \(tweet.createdAt)")
                     results = tweets
                 }

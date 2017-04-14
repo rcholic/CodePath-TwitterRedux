@@ -25,8 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("handling url: \(url.host)")
-        print("url query: \(url.query)")
+        
+        /*
+         // for OAuthSwift
+         
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handle(url: url)
+            return true
+        }
+        */
         
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         TwitterClient.shared.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
@@ -37,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             TwitterClient.shared.retrieveCurrentUser(success: { (twtUser) in
-                if let screenName = twtUser?.screenName {
-                    _ = DataManager.shared.save(screenName, for: DataKey.screenName)
+                if let curUser = twtUser, let jsonStr = curUser.toJSONString() {
+                    _ = DataManager.shared.save(jsonStr, for: DataKey.twitterUser)
                 }
             }, failure: { (error) in
                 print("error: \(error)")
