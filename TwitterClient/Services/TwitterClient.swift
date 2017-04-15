@@ -129,4 +129,20 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
+    internal func sendTweet(text: String, replyToId: String?, success: @escaping (Tweet?) -> ()) {
+
+        guard text.characters.count > 0 else {
+            return
+        }
+        var params : [String : Any] = ["status": text]
+        if let id = replyToId, let id64 = Int64(id) {
+            params["in_reply_to_status_id"] = id64
+        }
+
+        post("1.1/statuses/update.json", parameters: params, success: { (operation, response) -> Void in
+            let tweet = Mapper<Tweet>().map(JSON: JSON(response).dictionaryObject!)
+            success(tweet)
+        })
+    }
+    
 }

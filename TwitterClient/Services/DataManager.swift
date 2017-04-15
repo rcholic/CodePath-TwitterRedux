@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import ObjectMapper
 struct DataManager {
     
     public static let shared = DataManager()
@@ -74,5 +74,13 @@ struct DataManager {
         guard let dict = dict else { return nil }
         
         return dict.object(forKey: key.rawValue)
+    }
+    
+    func getCurUser() -> TwitterUser? {
+        var user: TwitterUser? = nil
+        if let userJsonStr = DataManager.shared.retrieve(for: DataKey.twitterUser) as? String {
+            user = Mapper<TwitterUser>().map(JSONString: userJsonStr)
+        }
+        return user
     }
 }

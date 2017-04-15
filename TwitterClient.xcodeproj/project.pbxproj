@@ -35,6 +35,7 @@
 		EB6FAE311E9F06E100A53475 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE2F1E9F06E100A53475 /* DataManager.swift */; };
 		EB6FAE321E9F06E100A53475 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE301E9F06E100A53475 /* TwitterClient.swift */; };
 		EB6FAE351E9F073D00A53475 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE341E9F073D00A53475 /* HomeViewController.swift */; };
+		EBF23EF31EA1D51F00E1E746 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		EB6FAE301E9F06E100A53475 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		EB6FAE341E9F073D00A53475 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EBF23EF01EA1BDAF00E1E746 /* FontAwesome_swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome_swift.framework; path = "Pods/../build/Debug-iphoneos/FontAwesome.swift/FontAwesome_swift.framework"; sourceTree = "<group>"; };
+		EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
 		F8FD4E20AF19BAA4B9F98066 /* Pods_TwitterClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -269,6 +271,7 @@
 			children = (
 				EB6FAE341E9F073D00A53475 /* HomeViewController.swift */,
 				EB48C61A1EA07B0F00302AB2 /* TweetDetailViewController.swift */,
+				EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				EB6FAE2B1E9F06D700A53475 /* BaseJsonModel.swift in Sources */,
 				EB6FAE2C1E9F06D700A53475 /* Tweet.swift in Sources */,
 				EB48C60B1EA05A9400302AB2 /* Date+ext.swift in Sources */,
+				EBF23EF31EA1D51F00E1E746 /* ComposeTweetViewController.swift in Sources */,
 				EB6FAE2D1E9F06D700A53475 /* TwitterUser.swift in Sources */,
 				EB6FAE311E9F06E100A53475 /* DataManager.swift in Sources */,
 				EB6FAE351E9F073D00A53475 /* HomeViewController.swift in Sources */,

@@ -32,6 +32,10 @@ class TweetDetailViewController: UIViewController {
         }) { (error) in
             print("error: \(error)")
         }
+        
+//        TwitterClient.shared.sendTweet(text: "hello world from iOS!", replyToId: id) { (publishedTweet) in
+//            print("published tweet.id: \(publishedTweet?.id)")
+//        }
     }
 }
 
@@ -43,6 +47,9 @@ extension TweetDetailViewController: TweetViewDelegate {
         switch didTap {
         case .reply:
             print("hit reply button")
+            if let targetVC = storyboard?.instantiateViewController(withIdentifier: "ComposeBoard") as? ComposeTweetViewController {
+                self.present(targetVC, animated: true, completion: nil)
+            }
         case .favorite:
 
             if let tweet = tweetView.tweet, let tweetId = tweet.id {

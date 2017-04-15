@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -95,6 +96,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etg-mH-5zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2280.8000000000002" y="-546.47676161919048"/>
+        </scene>
+        <!--Compose Tweet View Controller-->
+        <scene sceneID="MfJ-ur-Xdu">
+            <objects>
+                <viewController storyboardIdentifier="ComposeBoard" id="zR6-q6-Cka" customClass="ComposeTweetViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KbE-h1-F86"/>
+                        <viewControllerLayoutGuide type="bottom" id="kzg-Zj-4gJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="smy-qB-dTE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p5U-hr-UED">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Compose" id="Z40-WV-1S6">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="duX-KZ-Fl0">
+                                            <connections>
+                                                <action selector="didTapCancel:" destination="zR6-q6-Cka" id="bXm-1o-IIf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="ITW-J5-3Iy">
+                                            <connections>
+                                                <action selector="didTapTweet:" destination="zR6-q6-Cka" id="ROP-1A-3RT"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-b8-Yve">
+                                <rect key="frame" x="16" y="57" width="61" height="61"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Timothy Lee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsz-2B-yQW">
+                                <rect key="frame" x="85" y="77" width="95" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bsz-2B-yQW" firstAttribute="centerY" secondItem="NRE-b8-Yve" secondAttribute="centerY" id="7CN-ig-RWm"/>
+                            <constraint firstItem="NRE-b8-Yve" firstAttribute="leading" secondItem="smy-qB-dTE" secondAttribute="leadingMargin" constant="8" id="Ard-9y-b67"/>
+                            <constraint firstItem="NRE-b8-Yve" firstAttribute="top" secondItem="p5U-hr-UED" secondAttribute="bottom" symbolic="YES" id="ajq-xe-oj3"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Bsz-2B-yQW" secondAttribute="trailing" constant="8" id="cma-Bg-tps"/>
+                            <constraint firstItem="Bsz-2B-yQW" firstAttribute="leading" secondItem="NRE-b8-Yve" secondAttribute="trailing" constant="8" id="ocN-sG-eCy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="authorNambeLabel" destination="Bsz-2B-yQW" id="gvJ-II-pTW"/>
+                        <outlet property="profileImageView" destination="NRE-b8-Yve" id="uFD-5q-JQY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gnb-kx-MyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3077.5999999999999" y="-546.47676161919048"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Srn-KH-rPn">
