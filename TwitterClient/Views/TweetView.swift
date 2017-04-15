@@ -20,9 +20,11 @@ class TweetView: UIView {
     
     @IBOutlet weak var authorScreenLabel: UILabel!
     
-    @IBOutlet weak var timeagoLabel: UILabel!
+    @IBOutlet weak var timeagoLabel: UILabel!    
+
+    @IBOutlet var tweetTextLabel: UILabel!
     
-    @IBOutlet weak var tweetTextLabel: UILabel!
+    var view: UIView!
     
     internal var tweet: Tweet? {
         didSet {
@@ -32,7 +34,7 @@ class TweetView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        initPhase2()
+        initPhase2()
     }
     
     convenience init(tweet: Tweet) {
@@ -41,8 +43,9 @@ class TweetView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-//        initPhase2()
+        super.init(coder: aDecoder)
+//        fatalError("init(coder:) has not been implemented")
+        initPhase2()
     }
     
     override func layoutSubviews() {
@@ -51,9 +54,10 @@ class TweetView: UIView {
     }
     
     private func initPhase2() {
+        xibSetup()
         translatesAutoresizingMaskIntoConstraints = false
         authorProfileImageView.layer.cornerRadius = 3.0
-        autoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth]
+       // autoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth]
     }
     
     private func bindContent(_ tweet: Tweet?) {
@@ -65,7 +69,7 @@ class TweetView: UIView {
                 authorProfileImageView.setImageWith(profileImageUrl)
             }
             
-            authorScreenLabel.text = author.screenName ?? "no_s_name"
+            authorScreenLabel.text = "@\(author.screenName ?? "no_s_name")"
             autoNameLabel.text = author.name ?? "no_name"
             tweetTextLabel.text = twt.text ?? "no content"
             
@@ -74,6 +78,21 @@ class TweetView: UIView {
                 timeagoLabel.text = "\(timeAgo)"
             }
         }
+    }
+    
+    private func xibSetup() {
+        view = loadViewFromNib()
+        view.frame = bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        
+        addSubview(view)
+    }
+    
+    private func loadViewFromNib() -> UIView {
+        let nib = UINib(nibName: "TweetView", bundle: Bundle.main)
+        let curView = nib.instantiate(withOwner: self, options: nil).first as! UIView
+        
+        return curView
     }
     
     override func prepareForInterfaceBuilder() {

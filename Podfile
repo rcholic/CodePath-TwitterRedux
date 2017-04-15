@@ -10,9 +10,9 @@ target 'TwitterClient' do
   pod 'BDBOAuth1Manager'
   pod 'ObjectMapper', '~> 2.2'
   pod 'SwiftyJSON'
-  pod "PromiseKit", "~> 4.0"
-  pod 'Alamofire', '~> 4.4'
-  pod 'OAuthSwift', '~> 1.1.0'
+#  pod "PromiseKit", "~> 4.0"
+#  pod 'Alamofire', '~> 4.4'
+#  pod 'OAuthSwift', '~> 1.1.1'
 
   target 'TwitterClientTests' do
     inherit! :search_paths
