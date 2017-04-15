@@ -17,9 +17,21 @@ class TweetDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let twt = tweet {
-            tweetView.tweet = twt
+            tweetView.tweet = twt // use twt as temporary placeholder
             tweetView.delegate = self
+            
+            // pull the tweet for the latest update
+            populateTweet(id: twt.id)
         }        
+    }
+    
+    private func populateTweet(id: String?) {
+        guard let tweetId = id else { return }
+        TwitterClient.shared.fetchTweet(id: tweetId, params: nil, success: { [weak self] (tweet) in
+            self?.tweetView.tweet = tweet // update with the latest download
+        }) { (error) in
+            print("error: \(error)")
+        }
     }
 }
 

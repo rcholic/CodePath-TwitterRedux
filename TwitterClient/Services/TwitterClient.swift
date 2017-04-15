@@ -108,12 +108,24 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         post("1.1/statuses/\(endpoint)/\(tweetId).json", parameters: params, success: { (operation, response) in
             
             let tweet = Mapper<Tweet>().map(JSON: JSON(response).dictionaryObject!)
-            print("toggled retweet: \(tweet?.isRetweeted)")
+
             completion(tweet, nil)
             
         }) { (failedOperation, error) in
             completion(nil, error)
             print("error in favorite: \(error)")
+        }
+    }
+    
+    internal func fetchTweet(id: String, params: [String : Any]?, success: @escaping (Tweet?) -> Void, failure: @escaping (Error?) -> Void) {
+        
+        get("1.1/statuses/show.json?id=\(id)", parameters: params, success: { (operation, response) in
+            
+            let tweet = Mapper<Tweet>().map(JSON: JSON(response).dictionaryObject!)
+            success(tweet)
+            
+        }) { (failedOperation, error) in
+            failure(error)
         }
     }
     
