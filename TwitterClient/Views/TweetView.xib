@@ -15,8 +15,10 @@
                 <outlet property="authorScreenLabel" destination="q6W-aB-LkK" id="dYW-n2-yLr"/>
                 <outlet property="autoNameLabel" destination="9O1-3m-RYi" id="y7E-BP-iFm"/>
                 <outlet property="favoriteButton" destination="yeu-Ke-EvG" id="zp1-Pe-g6P"/>
+                <outlet property="favoriteCountLabel" destination="lNJ-MS-q3d" id="AkF-B9-6iI"/>
                 <outlet property="replyButton" destination="zqh-4q-qLB" id="5RU-32-c0i"/>
                 <outlet property="retweetButton" destination="0NR-3y-IVP" id="7eG-p6-Vhh"/>
+                <outlet property="retweetCountLabel" destination="8k4-c0-wwx" id="V76-vu-GvM"/>
                 <outlet property="timeagoLabel" destination="9S2-N1-7Xj" id="Hgw-Xq-qQg"/>
                 <outlet property="tweetTextLabel" destination="qIu-Hp-8yn" id="eWD-Np-jCt"/>
             </connections>
@@ -57,30 +59,45 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j88-Id-z1o">
-                    <rect key="frame" x="115" y="85" width="180" height="30"/>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="j88-Id-z1o">
+                    <rect key="frame" x="115" y="85" width="198" height="28"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqh-4q-qLB">
-                            <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="Reply"/>
                             <connections>
                                 <action selector="didTapReply:" destination="-1" eventType="touchUpInside" id="ClX-D5-oNZ"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NR-3y-IVP">
-                            <rect key="frame" x="54" y="0.0" width="56" height="30"/>
+                            <rect key="frame" x="36" y="0.0" width="50" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="Retweet"/>
                             <connections>
                                 <action selector="didTapRetweet:" destination="-1" eventType="touchUpInside" id="wS3-FJ-SJR"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(1000)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8k4-c0-wwx">
+                            <rect key="frame" x="88" y="8" width="31.5" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeu-Ke-EvG">
-                            <rect key="frame" x="125" y="0.0" width="55" height="30"/>
+                            <rect key="frame" x="121.5" y="0.0" width="49" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="Favorite"/>
                             <connections>
                                 <action selector="didTapFavorite:" destination="-1" eventType="touchUpInside" id="EUG-Cp-6ih"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(100)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNJ-MS-q3d">
+                            <rect key="frame" x="172.5" y="8" width="25" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </stackView>
             </subviews>

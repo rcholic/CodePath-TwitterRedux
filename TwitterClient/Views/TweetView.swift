@@ -40,6 +40,10 @@ class TweetView: UIView {
     
     @IBOutlet var favoriteButton: UIButton!
     
+    @IBOutlet var retweetCountLabel: UILabel!
+    
+    @IBOutlet var favoriteCountLabel: UILabel!
+    
     var view: UIView!
     
     weak var delegate: TweetViewDelegate?
@@ -107,6 +111,11 @@ class TweetView: UIView {
         } else {
             retweetButton.tintColor = inactiveTint
         }
+        let retweetCountTxt = twt.retweetCount > 0 ? "(\(twt.retweetCount))" : ""
+        retweetCountLabel.text = retweetCountTxt
+        
+        let favoriteCountTxt = twt.favoritesCount > 0 ? "(\(twt.favoritesCount))" : ""
+        favoriteCountLabel.text = favoriteCountTxt
     }
     
     private func xibSetup() {
