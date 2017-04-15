@@ -98,6 +98,7 @@
 		EB6FAE2F1E9F06E100A53475 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EB6FAE301E9F06E100A53475 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		EB6FAE341E9F073D00A53475 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EBF23EF01EA1BDAF00E1E746 /* FontAwesome_swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome_swift.framework; path = "Pods/../build/Debug-iphoneos/FontAwesome.swift/FontAwesome_swift.framework"; sourceTree = "<group>"; };
 		F8FD4E20AF19BAA4B9F98066 /* Pods_TwitterClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -196,6 +197,7 @@
 		5C06CACCE5FEF963794C486C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBF23EF01EA1BDAF00E1E746 /* FontAwesome_swift.framework */,
 				00FB66C11E9D46CA005D39B3 /* OAuthSwift.framework */,
 				00FB66BB1E9D1878005D39B3 /* SwiftyJSON.framework */,
 				00FB66B91E9D1873005D39B3 /* PromiseKit.framework */,
@@ -722,6 +724,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FontAwesome.swift",
+				);
 				INFOPLIST_FILE = TwitterClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tonywang.TwitterClient;
@@ -738,6 +744,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FontAwesome.swift",
+				);
 				INFOPLIST_FILE = TwitterClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tonywang.TwitterClient;

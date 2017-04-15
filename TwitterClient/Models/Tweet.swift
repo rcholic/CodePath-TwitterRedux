@@ -25,6 +25,7 @@ class Tweet: BaseJsonModel {
     var isRetweeted: Bool = false
     var author: TwitterUser? = nil
     var favoritesCount: Int? = 0
+    var isFavorited: Bool = false
     
     override func mapping(map: Map) {
         // TODO: date conversion
@@ -49,6 +50,7 @@ class Tweet: BaseJsonModel {
         isRetweeted <- map["retweeted"]
         author <- map["user"]
         favoritesCount <- map["favourites_count"]
+        isFavorited <- map["favorited"]
     }
     
     

@@ -9,7 +9,17 @@
 import UIKit
 import AFNetworking
 
-//import SnapKit
+//typealias tweetviewDelegateCallback = (() -> Void)
+
+@objc internal enum TweetViewButtonType: Int {
+    case favorite
+    case retweet
+    case reply
+}
+
+@objc protocol TweetViewDelegate: class {
+    @objc func tweetView(_ tweetView: TweetView, didTap: TweetViewButtonType) // , callback: tweetviewDelegateCallback?
+}
 
 @IBDesignable
 class TweetView: UIView {
@@ -24,7 +34,15 @@ class TweetView: UIView {
 
     @IBOutlet var tweetTextLabel: UILabel!
     
+    @IBOutlet var replyButton: UIButton!
+    
+    @IBOutlet var retweetButton: UIButton!
+    
+    @IBOutlet var favoriteButton: UIButton!
+    
     var view: UIView!
+    
+    weak var delegate: TweetViewDelegate?
     
     internal var tweet: Tweet? {
         didSet {
@@ -63,7 +81,7 @@ class TweetView: UIView {
     private func bindContent(_ tweet: Tweet?) {
         
         guard let twt = tweet else { return }
-        
+        NSLog("binging tweet to the tweet view")
         if let author = twt.author {
             if let profileImageUrl = author.profileImgUrl {
                 authorProfileImageView.setImageWith(profileImageUrl)
@@ -77,6 +95,17 @@ class TweetView: UIView {
                 let timeAgo = Date().timeSince(from: createdAt)
                 timeagoLabel.text = "\(timeAgo)"
             }
+        }
+        if twt.isFavorited {
+            favoriteButton.tintColor = tintColor
+        } else {
+            favoriteButton.tintColor = inactiveTint
+        }
+        
+        if twt.isRetweeted {
+            retweetButton.tintColor = tintColor
+        } else {
+            retweetButton.tintColor = inactiveTint
         }
     }
     
@@ -105,5 +134,20 @@ class TweetView: UIView {
         self.addSubview(textLabel)
         textLabel.frame = CGRect(x: 0, y: 0, width: (self.superview?.bounds.width)!, height: 50)
     }
+    
+    @IBAction func didTapReply(_ sender: Any) {
+        delegate?.tweetView(self, didTap: TweetViewButtonType.reply)
+    }
+    
+    @IBAction func didTapRetweet(_ sender: Any) {
+        delegate?.tweetView(self, didTap: TweetViewButtonType.retweet)
+    }
+    
+    @IBAction func didTapFavorite(_ sender: Any) {
+        delegate?.tweetView(self, didTap: TweetViewButtonType.favorite)
+    }
+    
+    
+    
     
 }

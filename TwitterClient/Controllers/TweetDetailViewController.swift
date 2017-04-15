@@ -17,7 +17,32 @@ class TweetDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let twt = tweet {
-            self.tweetView.tweet = twt
+            tweetView.tweet = twt
+            tweetView.delegate = self
         }        
+    }
+}
+
+extension TweetDetailViewController: TweetViewDelegate {
+    
+    func tweetView(_ tweetView: TweetView, didTap: TweetViewButtonType) {
+        // assign tweet to tweetView:
+//        tweetView.tweet = //
+        switch didTap {
+        case .reply:
+            print("hit reply button")
+        case .favorite:
+            print("hit favorite button")
+            if let tweet = tweetView.tweet, let tweetId = tweet.id {
+                TwitterClient.shared.toggle(favorite: !tweet.isFavorited, tweetId: tweetId, params: nil, completion: { (tweet, error) in
+                    
+                    print("received toggled tweet: \(tweet)")
+                    tweetView.tweet = tweet // update tweet in the view
+                })
+            }
+
+        default:
+            print("hit retweet button")
+        }
     }
 }
