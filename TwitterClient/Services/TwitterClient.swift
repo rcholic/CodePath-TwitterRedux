@@ -92,13 +92,25 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         let endpoint = favorite ? "create" : "destroy"
         // e.g. 1.1/favorites/create.json?id=243138128959913986
         post("1.1/favorites/\(endpoint).json?id=\(tweetId)", parameters: params, success: { (operation, response) in
-            print("response for favorite: \(response)")
-            let json = JSON(response)
-            let twtUser = Mapper<TwitterUser>().map(JSON: json.dictionaryObject!)
             
             let tweet = Mapper<Tweet>().map(JSON: JSON(response).dictionaryObject!)
-            print("toggled tweet: \(tweet?.isFavorited)")
             completion(tweet, nil)
+            
+        }) { (failedOperation, error) in
+            completion(nil, error)
+            print("error in favorite: \(error)")
+        }
+    }
+    
+    internal func retweet(tweetId: String, toRetweet: Bool, params: [String: Any]?, completion: @escaping (_ tweet: Tweet?, _ error: Error?) -> Void) {
+        
+        let endpoint = toRetweet ? "retweet" : "unretweet"
+        post("1.1/statuses/\(endpoint)/\(tweetId).json", parameters: params, success: { (operation, response) in
+            
+            let tweet = Mapper<Tweet>().map(JSON: JSON(response).dictionaryObject!)
+            print("toggled retweet: \(tweet?.isRetweeted)")
+            completion(tweet, nil)
+            
         }) { (failedOperation, error) in
             completion(nil, error)
             print("error in favorite: \(error)")

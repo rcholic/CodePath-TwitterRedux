@@ -32,7 +32,7 @@ extension TweetDetailViewController: TweetViewDelegate {
         case .reply:
             print("hit reply button")
         case .favorite:
-            print("hit favorite button")
+
             if let tweet = tweetView.tweet, let tweetId = tweet.id {
                 TwitterClient.shared.toggle(favorite: !tweet.isFavorited, tweetId: tweetId, params: nil, completion: { (tweet, error) in
                     
@@ -42,7 +42,13 @@ extension TweetDetailViewController: TweetViewDelegate {
             }
 
         default:
-            print("hit retweet button")
+            // retweet as default
+            if let tweet = tweetView.tweet, let tweetId = tweet.id {
+                TwitterClient.shared.retweet(tweetId: tweetId, toRetweet: !tweet.isRetweeted, params: nil, completion: { (tweet, error) in
+                    print("received retweeted tweet: \(tweet)")
+                    tweetView.tweet = tweet // update tweet
+                })
+            }
         }
     }
 }
