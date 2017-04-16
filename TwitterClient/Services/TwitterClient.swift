@@ -129,14 +129,19 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
-    internal func sendTweet(text: String, replyToId: String?, success: @escaping (Tweet?) -> ()) {
+    // reference: https://dev.twitter.com/rest/reference/post/statuses/update
+    internal func sendTweet(text: String, replyTo: Tweet?, success: @escaping (Tweet?) -> ()) {
 
         guard text.characters.count > 0 else {
             return
         }
         var params : [String : Any] = ["status": text]
-        if let id = replyToId, let id64 = Int64(id) {
-            params["in_reply_to_status_id"] = id64
+
+        if let tweet = replyTo, let author = tweet.author {
+            print("replying to user id: \(author.id)")
+            params["in_reply_to_screen_name"] = author.screenName
+            params["in_reply_to_status_id_str"] = tweet.id
+            params["in_reply_to_user_id"] = author.id
         }
 
         post("1.1/statuses/update.json", parameters: params, success: { (operation, response) -> Void in

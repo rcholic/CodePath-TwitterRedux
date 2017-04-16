@@ -7,8 +7,9 @@
 //
 import ObjectMapper
 
-class TwitterUser: BaseJsonModel {
+class TwitterUser: BaseJsonModel, CustomStringConvertible {
     
+    var id: Int64 = 0
     var name: String?
     var screenName: String?
     var profileImgUrl: URL?
@@ -18,6 +19,7 @@ class TwitterUser: BaseJsonModel {
     var location: String?
     
     override func mapping(map: Map) {
+        id <- map["id"]
         name <- map["name"]
         screenName <- map["screen_name"]
         profileImgUrl <- (map["profile_image_url"], URLTransform()) // profile_image_url_https
@@ -25,5 +27,9 @@ class TwitterUser: BaseJsonModel {
         followersCount <- map["followers_count"]
         aboutMeUrl <- (map["url"], URLTransform())
         location <- map["location"]
+    }
+    
+    public var description: String {
+        return "author name: \(name), id: \(id) tagline: \(tagline)"
     }
 }

@@ -28,6 +28,7 @@ class TweetDetailViewController: UIViewController {
     private func populateTweet(id: String?) {
         guard let tweetId = id else { return }
         TwitterClient.shared.fetchTweet(id: tweetId, params: nil, success: { [weak self] (tweet) in
+            self?.tweet = tweet
             self?.tweetView.tweet = tweet // update with the latest download
         }) { (error) in
             print("error: \(error)")
@@ -42,20 +43,19 @@ class TweetDetailViewController: UIViewController {
 extension TweetDetailViewController: TweetViewDelegate {
     
     func tweetView(_ tweetView: TweetView, didTap: TweetViewButtonType) {
-        // assign tweet to tweetView:
-//        tweetView.tweet = //
+
         switch didTap {
         case .reply:
-            print("hit reply button")
             if let targetVC = storyboard?.instantiateViewController(withIdentifier: "ComposeBoard") as? ComposeTweetViewController {
+
+                targetVC.replyToTweet = self.tweet // passed as a tweet replying to
                 self.present(targetVC, animated: true, completion: nil)
             }
         case .favorite:
 
             if let tweet = tweetView.tweet, let tweetId = tweet.id {
                 TwitterClient.shared.toggle(favorite: !tweet.isFavorited, tweetId: tweetId, params: nil, completion: { (tweet, error) in
-                    
-                    print("received toggled tweet: \(tweet)")
+//                    print("received favorite toggled tweet: \(tweet)")
                     tweetView.tweet = tweet // update tweet in the view
                 })
             }

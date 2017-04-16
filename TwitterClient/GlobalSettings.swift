@@ -28,4 +28,6 @@ public let TWT_BASE_URL = URL(string: "https://api.twitter.com")!
 
 public let inactiveTint = UIColor.gray
 
+public let TWT_CHARACTERS_LIMIT = 140
+
 //public let activeTint = // self.tintColor

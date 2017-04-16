@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QQe-jO-laR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QQe-jO-laR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -109,45 +108,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p5U-hr-UED">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Compose" id="Z40-WV-1S6">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="duX-KZ-Fl0">
-                                            <connections>
-                                                <action selector="didTapCancel:" destination="zR6-q6-Cka" id="bXm-1o-IIf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="ITW-J5-3Iy">
-                                            <connections>
-                                                <action selector="didTapTweet:" destination="zR6-q6-Cka" id="ROP-1A-3RT"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-b8-Yve">
-                                <rect key="frame" x="16" y="57" width="61" height="61"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-b8-Yve">
+                                <rect key="frame" x="20" y="50" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Ead-8k-NMp"/>
+                                    <constraint firstAttribute="width" constant="45" id="S3n-Uy-0n6"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Timothy Lee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsz-2B-yQW">
-                                <rect key="frame" x="85" y="77" width="95" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timothy Lee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsz-2B-yQW">
+                                <rect key="frame" x="73" y="63" width="84.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" distribution="equalSpacing" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1ne-xB-rPY">
+                                <rect key="frame" x="255" y="63" width="100" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaA-XY-zVi">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapCancel:" destination="zR6-q6-Cka" eventType="touchUpInside" id="CJc-mS-b7L"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBD-qo-QOc">
+                                        <rect key="frame" x="58" y="0.0" width="42" height="30"/>
+                                        <state key="normal" title="Tweet"/>
+                                        <connections>
+                                            <action selector="didTapSubmit:" destination="zR6-q6-Cka" eventType="touchUpInside" id="ZUz-sY-JJj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cJS-PI-U8B">
+                                <rect key="frame" x="20" y="103" width="335" height="110"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="ybb-wI-87l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining Characters:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thj-kl-WeO">
+                                <rect key="frame" x="199.5" y="221" width="155.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Bsz-2B-yQW" firstAttribute="centerY" secondItem="NRE-b8-Yve" secondAttribute="centerY" id="7CN-ig-RWm"/>
-                            <constraint firstItem="NRE-b8-Yve" firstAttribute="leading" secondItem="smy-qB-dTE" secondAttribute="leadingMargin" constant="8" id="Ard-9y-b67"/>
-                            <constraint firstItem="NRE-b8-Yve" firstAttribute="top" secondItem="p5U-hr-UED" secondAttribute="bottom" symbolic="YES" id="ajq-xe-oj3"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Bsz-2B-yQW" secondAttribute="trailing" constant="8" id="cma-Bg-tps"/>
-                            <constraint firstItem="Bsz-2B-yQW" firstAttribute="leading" secondItem="NRE-b8-Yve" secondAttribute="trailing" constant="8" id="ocN-sG-eCy"/>
+                            <constraint firstAttribute="trailing" secondItem="thj-kl-WeO" secondAttribute="trailing" constant="20" symbolic="YES" id="3kx-5i-LKO"/>
+                            <constraint firstItem="thj-kl-WeO" firstAttribute="top" secondItem="cJS-PI-U8B" secondAttribute="bottom" constant="8" id="58D-Og-v3e"/>
+                            <constraint firstAttribute="trailing" secondItem="1ne-xB-rPY" secondAttribute="trailing" constant="20" symbolic="YES" id="ARW-Gf-tRs"/>
+                            <constraint firstItem="Bsz-2B-yQW" firstAttribute="centerY" secondItem="NRE-b8-Yve" secondAttribute="centerY" id="B4y-SV-DZd"/>
+                            <constraint firstItem="NRE-b8-Yve" firstAttribute="leading" secondItem="smy-qB-dTE" secondAttribute="leading" constant="20" symbolic="YES" id="CDn-xB-1lV"/>
+                            <constraint firstItem="thj-kl-WeO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="smy-qB-dTE" secondAttribute="leading" constant="8" id="CkL-dW-hn1"/>
+                            <constraint firstItem="NRE-b8-Yve" firstAttribute="top" secondItem="KbE-h1-F86" secondAttribute="bottom" constant="30" id="EQi-Ss-3p4"/>
+                            <constraint firstItem="cJS-PI-U8B" firstAttribute="leading" secondItem="smy-qB-dTE" secondAttribute="leading" constant="20" symbolic="YES" id="MAx-rB-5LO"/>
+                            <constraint firstItem="1ne-xB-rPY" firstAttribute="top" secondItem="Bsz-2B-yQW" secondAttribute="top" id="Par-Ek-qtk"/>
+                            <constraint firstItem="Bsz-2B-yQW" firstAttribute="leading" secondItem="NRE-b8-Yve" secondAttribute="trailing" constant="8" id="QBk-Nl-BNc"/>
+                            <constraint firstAttribute="trailing" secondItem="cJS-PI-U8B" secondAttribute="trailing" constant="20" symbolic="YES" id="q22-vK-hV9"/>
+                            <constraint firstItem="cJS-PI-U8B" firstAttribute="top" secondItem="NRE-b8-Yve" secondAttribute="bottom" constant="8" id="sqD-db-Kg8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="authorNambeLabel" destination="Bsz-2B-yQW" id="gvJ-II-pTW"/>
+                        <outlet property="cancelButton" destination="iaA-XY-zVi" id="Tar-LS-P43"/>
+                        <outlet property="characterCountLabel" destination="thj-kl-WeO" id="PGi-k6-R3s"/>
                         <outlet property="profileImageView" destination="NRE-b8-Yve" id="uFD-5q-JQY"/>
+                        <outlet property="textView" destination="cJS-PI-U8B" id="FhI-X4-wgJ"/>
+                        <outlet property="tweetButton" destination="dBD-qo-QOc" id="7fj-6D-skh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gnb-kx-MyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
