@@ -8,8 +8,7 @@
 
 import UIKit
 import AFNetworking
-
-//typealias tweetviewDelegateCallback = (() -> Void)
+import Font_Awesome_Swift
 
 @objc internal enum TweetViewButtonType: Int {
     case favorite
@@ -18,7 +17,7 @@ import AFNetworking
 }
 
 @objc protocol TweetViewDelegate: class {
-    @objc func tweetView(_ tweetView: TweetView, didTap: TweetViewButtonType) // , callback: tweetviewDelegateCallback?
+    @objc func tweetView(_ tweetView: TweetView, didTap: TweetViewButtonType)
 }
 
 @IBDesignable
@@ -79,7 +78,11 @@ class TweetView: UIView {
         xibSetup()
         translatesAutoresizingMaskIntoConstraints = false
         authorProfileImageView.layer.cornerRadius = 3.0
-       // autoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth]
+        autoresizingMask = [.flexibleBottomMargin, .flexibleHeight, .flexibleWidth]
+        
+        replyButton.setFAIcon(icon: FAType.FAReply, iconSize: 17, forState: .normal)
+        retweetButton.setFAIcon(icon: FAType.FARetweet, iconSize: 17, forState: .normal)
+        favoriteButton.setFAIcon(icon: FAType.FAHeart, iconSize: 17, forState: .normal)
     }
     
     private func bindContent(_ tweet: Tweet?) {
@@ -137,17 +140,6 @@ class TweetView: UIView {
         return curView
     }
     
-//    override func prepareForInterfaceBuilder() {
-//        super.prepareForInterfaceBuilder()
-//        
-//        let textLabel = UILabel()
-//        textLabel.text = "Tweet View!"
-//        textLabel.textAlignment = .center
-//        textLabel.font = UIFont.systemFont(ofSize: 18)
-//        self.addSubview(textLabel)
-//        textLabel.frame = CGRect(x: 0, y: 0, width: (self.superview?.bounds.width)!, height: 50)
-//    }
-    
     @IBAction func didTapReply(_ sender: Any) {
         delegate?.tweetView(self, didTap: TweetViewButtonType.reply)
     }
@@ -159,8 +151,4 @@ class TweetView: UIView {
     @IBAction func didTapFavorite(_ sender: Any) {
         delegate?.tweetView(self, didTap: TweetViewButtonType.favorite)
     }
-    
-    
-    
-    
 }

@@ -35,6 +35,7 @@
 		EB6FAE311E9F06E100A53475 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE2F1E9F06E100A53475 /* DataManager.swift */; };
 		EB6FAE321E9F06E100A53475 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE301E9F06E100A53475 /* TwitterClient.swift */; };
 		EB6FAE351E9F073D00A53475 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE341E9F073D00A53475 /* HomeViewController.swift */; };
+		EB7221471EA3148E0003CF80 /* Font_Awesome_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7221461EA3148E0003CF80 /* Font_Awesome_Swift.framework */; };
 		EBF23EF31EA1D51F00E1E746 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		EB6FAE2F1E9F06E100A53475 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EB6FAE301E9F06E100A53475 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		EB6FAE341E9F073D00A53475 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EB7221461EA3148E0003CF80 /* Font_Awesome_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Font_Awesome_Swift.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/TwitterClient-aiqvwetekojqbsggrrguqmyvwwlg/Build/Products/Debug-iphonesimulator/Font-Awesome-Swift/Font_Awesome_Swift.framework"; sourceTree = "<group>"; };
 		EBF23EF01EA1BDAF00E1E746 /* FontAwesome_swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome_swift.framework; path = "Pods/../build/Debug-iphoneos/FontAwesome.swift/FontAwesome_swift.framework"; sourceTree = "<group>"; };
 		EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
 		F8FD4E20AF19BAA4B9F98066 /* Pods_TwitterClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB7221471EA3148E0003CF80 /* Font_Awesome_Swift.framework in Frameworks */,
 				00FB66BC1E9D1878005D39B3 /* SwiftyJSON.framework in Frameworks */,
 				00FB66B61E9D186A005D39B3 /* ObjectMapper.framework in Frameworks */,
 				00FB66B41E9D1866005D39B3 /* BDBOAuth1Manager.framework in Frameworks */,
@@ -199,6 +202,7 @@
 		5C06CACCE5FEF963794C486C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB7221461EA3148E0003CF80 /* Font_Awesome_Swift.framework */,
 				EBF23EF01EA1BDAF00E1E746 /* FontAwesome_swift.framework */,
 				00FB66C11E9D46CA005D39B3 /* OAuthSwift.framework */,
 				00FB66BB1E9D1878005D39B3 /* SwiftyJSON.framework */,
