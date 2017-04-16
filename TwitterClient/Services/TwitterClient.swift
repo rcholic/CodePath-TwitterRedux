@@ -57,13 +57,13 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
 
             failure(error)
         })
-        
     }
     
     // MARK: get home time lines
-    internal func getHomeTimeLine(maxId: Int? = nil, success: @escaping ([Tweet]) -> Void, failure: @escaping (Error?) -> Void) {
-        var params = ["count": 20]
+    internal func getHomeTimeLine(maxId: Int64? = nil, success: @escaping ([Tweet]) -> Void, failure: @escaping (Error?) -> Void) {
+        var params : [String : Any] = ["count": 20]
         if let max = maxId {
+            print("loading from max id: \(max)")
             params["max_id"] = max
         }
         
@@ -140,7 +140,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         if let tweet = replyTo, let author = tweet.author {
             print("replying to user id: \(author.id)")
             params["in_reply_to_screen_name"] = author.screenName
-            params["in_reply_to_status_id_str"] = tweet.id
+            params["in_reply_to_status_id"] = tweet.id
             params["in_reply_to_user_id"] = author.id
         }
 

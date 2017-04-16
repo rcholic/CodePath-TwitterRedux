@@ -102,14 +102,18 @@ class TweetView: UIView {
         }
         if twt.isFavorited {
             favoriteButton.tintColor = tintColor
+//            favoriteButton.setTitle("Unfavorite", for: .normal)
         } else {
             favoriteButton.tintColor = inactiveTint
+//            favoriteButton.setTitle("Favorite", for: .normal)
         }
         
         if twt.isRetweeted {
             retweetButton.tintColor = tintColor
+//            retweetButton.setTitle("Unretweet", for: .normal)
         } else {
             retweetButton.tintColor = inactiveTint
+//            retweetButton.setTitle("Retweet", for: .normal)
         }
         let retweetCountTxt = twt.retweetCount > 0 ? "(\(twt.retweetCount))" : ""
         retweetCountLabel.text = retweetCountTxt
@@ -133,16 +137,16 @@ class TweetView: UIView {
         return curView
     }
     
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        let textLabel = UILabel()
-        textLabel.text = "Tweet View!"
-        textLabel.textAlignment = .center
-        textLabel.font = UIFont.systemFont(ofSize: 18)
-        self.addSubview(textLabel)
-        textLabel.frame = CGRect(x: 0, y: 0, width: (self.superview?.bounds.width)!, height: 50)
-    }
+//    override func prepareForInterfaceBuilder() {
+//        super.prepareForInterfaceBuilder()
+//        
+//        let textLabel = UILabel()
+//        textLabel.text = "Tweet View!"
+//        textLabel.textAlignment = .center
+//        textLabel.font = UIFont.systemFont(ofSize: 18)
+//        self.addSubview(textLabel)
+//        textLabel.frame = CGRect(x: 0, y: 0, width: (self.superview?.bounds.width)!, height: 50)
+//    }
     
     @IBAction func didTapReply(_ sender: Any) {
         delegate?.tweetView(self, didTap: TweetViewButtonType.reply)

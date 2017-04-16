@@ -10,7 +10,6 @@ import Foundation
 
 internal enum DataKey: String {
     case twitterUser = "TwitterUser"
-//    case screenName = "ScreenName"
     case requestToken = "RequestToken"
     case accessToken = "AccessToken"
     case lastLogin = "LastLogin"
@@ -24,7 +23,9 @@ public let TWT_CONSUMER_KEY = "PWCc8DMAYyEETbZRBtm6UcpzL"
 
 public let TWT_CONSUMER_SECRET = "h5WG1TfkGS0QGNDK3dyLEe3GchBMWZqPivPIucAESPJrTlItw3"
 
-public let TWT_BASE_URL = URL(string: "https://api.twitter.com")!
+public let TWT_BASE_HTTP_PATH = "https://api.twitter.com"
+
+public let TWT_BASE_URL = URL(string: TWT_BASE_HTTP_PATH)!
 
 public let inactiveTint = UIColor.gray
 

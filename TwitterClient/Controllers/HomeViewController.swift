@@ -17,6 +17,7 @@ import SwiftyJSON
 
 class HomeViewController: UIViewController {
 
+    // TODO: distinguish infinite reload and drag to refresh: handle the array tweets differently!
     @IBOutlet weak var loginButton: UIBarButtonItem!
     @IBOutlet weak var composeButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +25,8 @@ class HomeViewController: UIViewController {
     fileprivate let refreshControl = UIRefreshControl()
     let cellIdentifier = "TweetCell"
     
+    var lowestTweetId: Int64? = nil
+    var isLoadingMoreTweets: Bool = false
     var curUser: TwitterUser? = nil
     var tweets: [Tweet] = []
     
@@ -46,10 +49,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initPhase2()
-        setupView()
+        loadTweets(maxId: nil)
     }
     
-    private func setupView() {
+    private func initPhase2() {
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -61,27 +65,32 @@ class HomeViewController: UIViewController {
         
         let cellNib = UINib(nibName: "TweetCell", bundle: Bundle.main)
         tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
-    }
-    
-    private func initPhase2() {
         
         isLoggedIn = TwitterClient.shared.isSignedIn()
-        if let userJsonStr = DataManager.shared.retrieve(for: DataKey.twitterUser) as? String {
-            curUser = Mapper<TwitterUser>().map(JSONString: userJsonStr)
-//            print("curUser: \(curUser?.name)")
-        }
+        curUser = DataManager.shared.getCurUser()
     }
     
     @IBAction func didTapGetTweets(_ sender: Any) {
-        TwitterClient.shared.getHomeTimeLine(success: { (tweets) in
-//            print("received tweets: \(tweets)")
-            self.refreshControl.endRefreshing()
-            self.tweets = tweets
-            self.tableView.reloadData()
+        loadTweets(maxId: nil)
+    }
+    
+    fileprivate func loadTweets(maxId: Int64?) {
+        if maxId == nil {
+            tweets.removeAll() // remove all the items, if any
+        }
+        
+        TwitterClient.shared.getHomeTimeLine(maxId: maxId, success: { [weak self] (tweets) in
+            self?.isLoadingMoreTweets = false
+            self?.refreshControl.endRefreshing()
+            self?.tweets += tweets
+            self?.tableView.reloadData()
+            self?.lowestTweetId = tweets.map {
+                return $0.id as Int64!
+                }.min()
+            print("lowestTweetId: \(self?.lowestTweetId as Int64!)")
         }) { (error) in
             print("error: \(error)")
         }
-        
     }
     
     
@@ -100,15 +109,15 @@ class HomeViewController: UIViewController {
             TwitterClient.shared.fetchRequestToken(
                 withPath: "oauth/request_token",
                 method: "GET",
-                callbackURL: URL(string: "swifty-oauth://oauth-callback/twitter")!,
+                callbackURL: URL(string: TWITTER_CALLBACK_URL)!,
                 scope: "scopetest",
-                success: { (requestToken: BDBOAuth1Credential?) in
+                success: { [weak self] (requestToken: BDBOAuth1Credential?) in
                     
-                print("token: \(requestToken?.token)")
                 if let token = requestToken?.token {
-                    let url = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")!
+                    
+                    let url = URL(string: "\(TWT_BASE_HTTP_PATH)/oauth/authorize?oauth_token=\(token)")!
                     UIApplication.shared.openURL(url)
-                    self.isLoggedIn = true
+                    self?.isLoggedIn = true
                 }
             }) { (error: Error?) in
                 print("error: \(error)")
@@ -124,7 +133,6 @@ class HomeViewController: UIViewController {
 
             self.present(targetVC, animated: true, completion: nil)
         }
-        
     }
     
 }
@@ -157,5 +165,24 @@ extension HomeViewController: UITableViewDelegate {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        guard !isLoadingMoreTweets else {
+            return
+        }
+        
+        let scrollViewContentHeight = tableView.contentSize.height
+        let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+        if scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging {
+            isLoadingMoreTweets = true
+            if let lowestId = lowestTweetId as Int64! {
+                lowestTweetId = lowestId - 1
+            }
+            loadTweets(maxId: lowestTweetId)
+        }
     }
 }
