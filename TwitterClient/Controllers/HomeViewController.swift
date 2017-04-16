@@ -8,7 +8,7 @@
 
 import UIKit
 import BDBOAuth1Manager
-//import Alamofire
+import Font_Awesome_Swift
 import ObjectMapper
 import SwiftyJSON
 
@@ -23,12 +23,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate let refreshControl = UIRefreshControl()
-    let cellIdentifier = "TweetCell"
+    fileprivate let cellIdentifier = "TweetCell"
+    fileprivate let cellNib = UINib(nibName: "TweetCell", bundle: Bundle.main)
+    fileprivate var lowestTweetId: Int64? = nil
+    fileprivate var isLoadingMoreTweets: Bool = false
+    fileprivate var tweets: [Tweet] = []
     
-    var lowestTweetId: Int64? = nil
-    var isLoadingMoreTweets: Bool = false
-    var curUser: TwitterUser? = nil
-    var tweets: [Tweet] = []
+    private var curUser: TwitterUser? = nil
     
     private var isLoggedIn: Bool = false {
         didSet {
@@ -54,23 +55,24 @@ class HomeViewController: UIViewController {
     
     private func initPhase2() {
         
+        composeButton.setFAIcon(icon: FAType.FATwitter, iconSize: 25)
+        
         tableView.dataSource = self
         tableView.delegate = self
-        
-        refreshControl.addTarget(self, action: #selector(self.didTapGetTweets(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refreshTweets(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         tableView.tableFooterView = UIView() // don't show empty cells
         
-        let cellNib = UINib(nibName: "TweetCell", bundle: Bundle.main)
+        
         tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         
         isLoggedIn = TwitterClient.shared.isSignedIn()
         curUser = DataManager.shared.getCurUser()
     }
     
-    @IBAction func didTapGetTweets(_ sender: Any) {
+    @objc private func refreshTweets(_ sender: Any) {
         loadTweets(maxId: nil)
     }
     
@@ -171,9 +173,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        guard !isLoadingMoreTweets else {
-            return
-        }
+        guard !isLoadingMoreTweets else { return }
         
         let scrollViewContentHeight = tableView.contentSize.height
         let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
