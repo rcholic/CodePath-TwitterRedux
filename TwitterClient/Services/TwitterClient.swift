@@ -88,7 +88,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
-    internal func toggle(favorite: Bool, tweetId: String, params: [String: Any]?, completion: @escaping (_ tweet: Tweet?, _ error: Error?) -> Void) {
+    internal func toggle(favorite: Bool, tweetId: Int64, params: [String: Any]?, completion: @escaping (_ tweet: Tweet?, _ error: Error?) -> Void) {
         let endpoint = favorite ? "create" : "destroy"
         // e.g. 1.1/favorites/create.json?id=243138128959913986
         post("1.1/favorites/\(endpoint).json?id=\(tweetId)", parameters: params, success: { (operation, response) in
@@ -102,7 +102,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
-    internal func retweet(tweetId: String, toRetweet: Bool, params: [String: Any]?, completion: @escaping (_ tweet: Tweet?, _ error: Error?) -> Void) {
+    internal func retweet(tweetId: Int64, toRetweet: Bool, params: [String: Any]?, completion: @escaping (_ tweet: Tweet?, _ error: Error?) -> Void) {
         
         let endpoint = toRetweet ? "retweet" : "unretweet"
         post("1.1/statuses/\(endpoint)/\(tweetId).json", parameters: params, success: { (operation, response) in
@@ -117,7 +117,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
-    internal func fetchTweet(id: String, params: [String : Any]?, success: @escaping (Tweet?) -> Void, failure: @escaping (Error?) -> Void) {
+    internal func fetchTweet(id: Int64, params: [String : Any]?, success: @escaping (Tweet?) -> Void, failure: @escaping (Error?) -> Void) {
         
         get("1.1/statuses/show.json?id=\(id)", parameters: params, success: { (operation, response) in
             

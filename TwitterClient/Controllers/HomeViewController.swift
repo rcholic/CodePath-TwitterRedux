@@ -31,12 +31,13 @@ class HomeViewController: UIViewController {
         didSet {
             if isLoggedIn {
                 self.loginButton.title = "Logout"
-                
+                self.composeButton.isEnabled = true
                 if let lastLogin = DataManager.shared.retrieve(for: DataKey.lastLogin) as? Date {
                     print("last login: \(lastLogin)")
                 }
                 
             } else {
+                self.composeButton.isEnabled = false
                 self.loginButton.title = "Login"
             }
         }
@@ -63,6 +64,7 @@ class HomeViewController: UIViewController {
     }
     
     private func initPhase2() {
+        
         isLoggedIn = TwitterClient.shared.isSignedIn()
         if let userJsonStr = DataManager.shared.retrieve(for: DataKey.twitterUser) as? String {
             curUser = Mapper<TwitterUser>().map(JSONString: userJsonStr)
@@ -94,7 +96,6 @@ class HomeViewController: UIViewController {
         } else {
             
 //            TwitterClient2.shared.login()
-            
             // login user
             TwitterClient.shared.fetchRequestToken(
                 withPath: "oauth/request_token",
@@ -114,6 +115,18 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func didTapTweetButton(_ sender: Any) {
+        // prevent unauthenticated user from tweeting
+        guard let _ = DataManager.shared.getCurUser() else { return }
+        
+        if let targetVC = storyboard?.instantiateViewController(withIdentifier: "ComposeBoard") as? ComposeTweetViewController {
+
+            self.present(targetVC, animated: true, completion: nil)
+        }
+        
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {

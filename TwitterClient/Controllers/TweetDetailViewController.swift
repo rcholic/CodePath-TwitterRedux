@@ -25,7 +25,7 @@ class TweetDetailViewController: UIViewController {
         }        
     }
     
-    private func populateTweet(id: String?) {
+    private func populateTweet(id: Int64?) {
         guard let tweetId = id else { return }
         TwitterClient.shared.fetchTweet(id: tweetId, params: nil, success: { [weak self] (tweet) in
             self?.tweet = tweet

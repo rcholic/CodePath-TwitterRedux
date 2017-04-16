@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tweets-->
+        <!--Home Timelines-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                             <constraint firstAttribute="trailing" secondItem="bbQ-3u-ZQx" secondAttribute="trailing" id="tzV-uL-6Gc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tweets" id="j9k-5Q-7os">
+                    <navigationItem key="navigationItem" title="Home Timelines" id="j9k-5Q-7os">
                         <leftBarButtonItems>
                             <barButtonItem title="Login" id="pMm-wQ-pA5">
                                 <connections>
@@ -48,7 +48,11 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Compose" id="o2R-ew-kxX"/>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="o2R-ew-kxX">
+                            <connections>
+                                <action selector="didTapTweetButton:" destination="BYZ-38-t0r" id="Exj-8j-qoa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="composeButton" destination="o2R-ew-kxX" id="Cgt-I8-fMk"/>
