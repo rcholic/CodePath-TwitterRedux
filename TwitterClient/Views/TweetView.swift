@@ -99,8 +99,8 @@ class TweetView: UIView {
             tweetTextLabel.text = twt.text ?? "no content"
             
             if let createdAt = twt.createdAt {
-                let now = Date().nowIn(timezone: TimeZoneEnum.utc, dateFormat: TWT_DATE_FORMAT)
-                print("now in utc: \(now)")
+                let now = Date().toTimezone(TimeZoneEnum.utc, dateFormat: TWT_DATE_FORMAT)
+//                print("now in utc: \(now)")
                 timeagoLabel.text = "\(now.timeSince(createdAt))"
             }
         }

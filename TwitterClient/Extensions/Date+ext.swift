@@ -63,10 +63,10 @@ extension Date {
                 return "Yesterday"
             }
         } else if (components.hour! >= 2) {
-            return "\(components.hour!) hours"
+            return "\(components.hour!) hrs"
         } else if (components.hour! >= 1){
             if (numerical){
-                return "1 hour"
+                return "1 hr"
             } else {
                 return "An hour"
             }
@@ -79,14 +79,14 @@ extension Date {
                 return "A minute"
             }
         } else if (components.second! >= 3) {
-            return "\(components.second!) seconds"
+            return "\(components.second!) sec"
         } else {
             return "Just now"
         }
     }
     
     // get Now time based on timezone abbreviation, e.g. "UTC" and date format
-    func nowIn(timezone: TimeZoneEnum?, dateFormat: String) -> Date {
+    func toTimezone(_ timezone: TimeZoneEnum?, dateFormat: String) -> Date {
         let tz = timezone ?? TimeZoneEnum.utc
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: tz.rawValue)

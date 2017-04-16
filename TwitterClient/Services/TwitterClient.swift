@@ -105,11 +105,21 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     internal func retweet(tweetId: Int64, toRetweet: Bool, params: [String: Any]?, completion: @escaping (_ tweet: Tweet?, _ error: Error?) -> Void) {
         
         let endpoint = toRetweet ? "retweet" : "unretweet"
-        post("1.1/statuses/\(endpoint)/\(tweetId).json", parameters: params, success: { (operation, response) in
+        post("1.1/statuses/\(endpoint)/\(tweetId).json", parameters: params, success: { [weak self] (operation, response) in
             
             let tweet = Mapper<Tweet>().map(JSON: JSON(response).dictionaryObject!)
 
             completion(tweet, nil)
+
+            //            // refetch the old tweet that has been just retweeted
+//            self?.fetchTweet(id: tweetId, params: nil, success: { (retweeted) in
+//                
+//                completion(retweeted, nil)
+//                
+//            }, failure: { (error) in
+//                print("error from retweet")
+//            })
+            
             
         }) { (failedOperation, error) in
             completion(nil, error)
