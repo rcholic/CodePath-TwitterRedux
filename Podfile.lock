@@ -26,6 +26,7 @@ PODS:
   - Font-Awesome-Swift (1.6.1)
   - ObjectMapper (2.2.5)
   - SwiftyJSON (3.1.4)
+  - Whisper (4.0.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - Font-Awesome-Swift (~> 1.6.1)
   - ObjectMapper (~> 2.2)
   - SwiftyJSON
+  - Whisper
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -40,7 +42,8 @@ SPEC CHECKSUMS:
   Font-Awesome-Swift: 70ab020f6749d7048bb49807c3e78b702d78afca
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Whisper: '08be92623311f8e53201e62e17f6d7b9599a4714'
 
-PODFILE CHECKSUM: 8b3fe11a971e9259f62f70a865d9758c19a72d71
+PODFILE CHECKSUM: 2f8eaea1297fc239bf3038db1eb3692bf4fe6ce8
 
 COCOAPODS: 1.2.0

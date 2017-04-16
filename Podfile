@@ -11,6 +11,7 @@ target 'TwitterClient' do
   pod 'ObjectMapper', '~> 2.2'
   pod 'SwiftyJSON'
   pod 'Font-Awesome-Swift', '~> 1.6.1'
+  pod 'Whisper'
 #  pod "PromiseKit", "~> 4.0"
 #  pod 'Alamofire', '~> 4.4'
 #  pod 'OAuthSwift', '~> 1.1.1'

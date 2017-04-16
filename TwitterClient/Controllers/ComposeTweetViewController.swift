@@ -9,6 +9,7 @@
 import UIKit
 import ObjectMapper
 import AFNetworking
+import Whisper
 
 class ComposeTweetViewController: UIViewController {
 
@@ -46,7 +47,7 @@ class ComposeTweetViewController: UIViewController {
             authorNambeLabel.text = user.name ?? "no name"
         }
         
-        if let replyTo = replyToTweet {
+        if let _ = replyToTweet {
             tweetButton.setTitle("Reply", for: .normal)
         }
         
@@ -71,8 +72,7 @@ class ComposeTweetViewController: UIViewController {
     @IBAction func didTapSubmit(_ sender: Any) {
 
         TwitterClient.shared.sendTweet(text: textView.text, replyTo: replyToTweet) { [weak self] (updatedTweet) in
-            print("successfully created/updated tweet: \(updatedTweet)")
-            // TODO: throw a toastr for success confirmation
+            Whisper.show(whistle: Murmur(title: "Tweet Successful!"), action: WhistleAction.show(3))
             self?.dismiss(animated: true, completion: nil)
         }
     }
