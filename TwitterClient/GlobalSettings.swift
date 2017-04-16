@@ -31,6 +31,8 @@ public let inactiveTint = UIColor.gray
 
 public let TWT_CHARACTERS_LIMIT = 140
 
+public let TWT_DATE_FORMAT = "EEE MMM d HH:mm:ss Z y"
+
 public let TWITTER_BLUE: UIColor = UIColor.init(red: 0/255.0, green: 132/225.0, blue: 180/255.0, alpha: 1.0)
 
 //public let activeTint = // self.tintColor

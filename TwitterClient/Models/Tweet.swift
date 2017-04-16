@@ -15,7 +15,7 @@
 //
 import ObjectMapper
 
-// https://dev.twitter.com/rest/reference/get/statuses/home_timeline
+// reference: https://dev.twitter.com/rest/reference/get/statuses/home_timeline
 class Tweet: BaseJsonModel, CustomStringConvertible {
     
     var id: Int64?
@@ -31,7 +31,7 @@ class Tweet: BaseJsonModel, CustomStringConvertible {
         
         id <- map["id"]
         text <- map["text"]
-        createdAt <- (map["created_at"], CustomDateFormatTransform(formatString: "EEE MMM d HH:mm:ss Z y")) // DateTransform()
+        createdAt <- (map["created_at"], CustomDateFormatTransform(formatString: TWT_DATE_FORMAT))
         retweetCount <- map["retweet_count"]
         isRetweeted <- map["retweeted"]
         author <- map["user"]
