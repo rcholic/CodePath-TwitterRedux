@@ -55,6 +55,7 @@ class ComposeTweetViewController: UIViewController {
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1.0
         textView.layer.masksToBounds = true
+//        textView.backgroundColor = textView.superview?.backgroundColor
         
         textView.delegate = self
         

@@ -26,8 +26,7 @@ class TweetCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        authoProfileImageView.layer.cornerRadius = 3.0
-        
+        authoProfileImageView.layer.cornerRadius = 3.0        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

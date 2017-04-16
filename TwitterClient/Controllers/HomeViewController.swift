@@ -55,7 +55,7 @@ class HomeViewController: UIViewController {
     
     private func initPhase2() {
         
-        composeButton.setFAIcon(icon: FAType.FATwitter, iconSize: 25)
+        composeButton.setFAText(prefixText: "", icon: FAType.FATwitter, postfixText: " Tweet", size: 17)
         
         tableView.dataSource = self
         tableView.delegate = self

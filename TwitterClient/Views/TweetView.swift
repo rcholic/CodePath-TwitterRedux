@@ -129,7 +129,7 @@ class TweetView: UIView {
     private func xibSetup() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+//        view.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
         addSubview(view)
     }
