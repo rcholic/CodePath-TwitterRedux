@@ -46,6 +46,8 @@ Here's a walkthrough of implemented user stories:
 
 ![](./screencast/screen2.gif)
 
+![](./screencast/screen1.gif)
+
 ## Notes
 
 I was originally thinking about using **Alamofire** and the associates routes to make Twitter API calls after the user is authenticated through *OAuth*, because that way I can use the library **PromiseKit** when making asynch calls. However, that will take me more time and efforts, and given that my daughter is having her spring break from school, I would like to shift my time a bit for spending with her :icecream::tada:
