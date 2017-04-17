@@ -12,7 +12,7 @@
         <!--Home Timelines-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -183,6 +183,52 @@
             </objects>
             <point key="canvasLocation" x="3077.5999999999999" y="-546.47676161919048"/>
         </scene>
+        <!--Onboard View Controller-->
+        <scene sceneID="T4c-y7-UQs">
+            <objects>
+                <viewController storyboardIdentifier="OnboardVC" id="SPs-LV-zIA" customClass="OnboardViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rMY-9v-WhF"/>
+                        <viewControllerLayoutGuide type="bottom" id="pi2-D4-D9k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W8z-Qb-HkU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="W29-nK-ELw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfB-Cb-yD1">
+                                <rect key="frame" x="16" y="516" width="336" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Signin with Twitter">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapLoginButton:" destination="SPs-LV-zIA" eventType="touchUpInside" id="qra-3t-kq5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pi2-D4-D9k" firstAttribute="top" secondItem="W29-nK-ELw" secondAttribute="bottom" id="00q-vl-HZf"/>
+                            <constraint firstItem="pi2-D4-D9k" firstAttribute="top" secondItem="kfB-Cb-yD1" secondAttribute="bottom" constant="90" id="5xY-Vh-8Or"/>
+                            <constraint firstAttribute="trailing" secondItem="kfB-Cb-yD1" secondAttribute="trailing" constant="20" symbolic="YES" id="689-mI-bPz"/>
+                            <constraint firstItem="W29-nK-ELw" firstAttribute="top" secondItem="W8z-Qb-HkU" secondAttribute="top" id="CJe-7K-Thr"/>
+                            <constraint firstItem="W29-nK-ELw" firstAttribute="leading" secondItem="W8z-Qb-HkU" secondAttribute="leading" id="Oob-Cx-8cK"/>
+                            <constraint firstAttribute="trailing" secondItem="W29-nK-ELw" secondAttribute="trailing" id="Q8o-mO-eMO"/>
+                            <constraint firstItem="kfB-Cb-yD1" firstAttribute="leading" secondItem="W8z-Qb-HkU" secondAttribute="leading" constant="20" symbolic="YES" id="gO9-g0-t8C"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="kfB-Cb-yD1" id="G6u-z1-oYu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lla-qg-O3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-990" y="-519"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Srn-KH-rPn">
             <objects>
@@ -220,4 +266,7 @@
             <point key="canvasLocation" x="1533.5999999999999" y="-546.47676161919048"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="twitterbg.jpg" width="1214" height="879"/>
+    </resources>
 </document>

@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
                 self.loginButton.title = "Logout"
                 self.composeButton.isEnabled = true
                 if let lastLogin = DataManager.shared.retrieve(for: DataKey.lastLogin) as? Date {
-                    print("last login: \(lastLogin)")
+//                    print("last login: \(lastLogin)")
                 }
                 
             } else {
@@ -49,8 +49,18 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        verifyLoginStatus() // if not logged in, redirect
         initPhase2()
         loadTweets(maxId: nil)
+    }
+    
+    private func verifyLoginStatus() {
+        
+        if !TwitterClient.shared.isSignedIn() {
+            if let onboardVC = storyboard?.instantiateViewController(withIdentifier: "OnboardVC") as? OnboardViewController {
+               present(onboardVC, animated: false, completion: nil)
+            }
+        }
     }
     
     private func initPhase2() {
@@ -89,9 +99,9 @@ class HomeViewController: UIViewController {
             self?.lowestTweetId = tweets.map {
                 return $0.id as Int64!
                 }.min()
-            print("lowestTweetId: \(self?.lowestTweetId as Int64!)")
+//            print("lowestTweetId: \(self?.lowestTweetId as Int64!)")
         }) { (error) in
-            print("error: \(error)")
+            NSLog("error: \(error)")
         }
     }
     
@@ -104,6 +114,7 @@ class HomeViewController: UIViewController {
             TwitterClient.shared.deauthorize()
             _ = DataManager.shared.delete(key: DataKey.accessToken)
             isLoggedIn = false
+            verifyLoginStatus()
         } else {
             
 //            TwitterClient2.shared.login()
@@ -122,7 +133,7 @@ class HomeViewController: UIViewController {
                     self?.isLoggedIn = true
                 }
             }) { (error: Error?) in
-                print("error: \(error)")
+                NSLog("error: \(error)")
             }
         }
     }
@@ -159,7 +170,7 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did select row: \(indexPath.row)")
+//        print("did select row: \(indexPath.row)")
         
         if let targetVC = self.storyboard?.instantiateViewController(withIdentifier: "TweetDetailVC") as? TweetDetailViewController {
             targetVC.tweet = tweets[indexPath.row]

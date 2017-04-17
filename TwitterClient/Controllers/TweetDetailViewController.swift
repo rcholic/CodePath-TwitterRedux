@@ -31,7 +31,7 @@ class TweetDetailViewController: UIViewController, TweetViewDelegate {
             self?.tweet = tweet
             self?.tweetView.tweet = tweet // update with the latest download
         }) { (error) in
-            print("error: \(error)")
+            NSLog("error: \(error)")
         }
     }
     
@@ -104,7 +104,7 @@ extension TweetDetailViewController: UIViewControllerTransitioningDelegate {
         }
         
         override func dismissalTransitionWillBegin() {
-            print("dismissing the view controller")
+//            print("dismissing the view controller")
             borderView.removeFromSuperview()
         }
         

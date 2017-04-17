@@ -24,7 +24,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     private var accessToken: String {
         get {
             guard let token = DataManager.shared.retrieve(for: DataKey.accessToken) else { return "" }
-            print("saved access token: \(token)")
+//            print("saved access token: \(token)")
             return token as! String
         }
     }

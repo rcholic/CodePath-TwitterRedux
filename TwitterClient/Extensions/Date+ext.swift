@@ -23,7 +23,7 @@ internal enum TimeZoneEnum: String {
 extension Date {
     
     // MARK: time since earlier date
-    func timeSince(_ earlierDate: Date, numerical:Bool = false) -> String {
+    func timeSince(_ earlierDate: Date, numerical: Bool = true) -> String {
         let calendar = Calendar.current
         let now = self
         let earliest = (now as NSDate).earlierDate(earlierDate)

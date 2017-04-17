@@ -25,6 +25,8 @@
 		EB291FEE1EA41E9800548712 /* TweetCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB291FEC1EA41E9800548712 /* TweetCell2.swift */; };
 		EB291FEF1EA41E9800548712 /* TweetCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB291FED1EA41E9800548712 /* TweetCell2.xib */; };
 		EB291FF11EA42E8800548712 /* Whisper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB291FF01EA42E8800548712 /* Whisper.framework */; };
+		EB291FF51EA432F200548712 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB291FF41EA432F200548712 /* OnboardViewController.swift */; };
+		EB291FFE1EA43B3E00548712 /* twitterbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB291FFC1EA43B3E00548712 /* twitterbg.jpg */; };
 		EB48C6011EA046D300302AB2 /* TwitterClient2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB48C6001EA046D300302AB2 /* TwitterClient2.swift */; };
 		EB48C6081EA05A8E00302AB2 /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB48C6071EA05A8E00302AB2 /* TweetView.swift */; };
 		EB48C60B1EA05A9400302AB2 /* Date+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB48C60A1EA05A9400302AB2 /* Date+ext.swift */; };
@@ -94,6 +96,9 @@
 		EB291FEC1EA41E9800548712 /* TweetCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell2.swift; sourceTree = "<group>"; };
 		EB291FED1EA41E9800548712 /* TweetCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell2.xib; sourceTree = "<group>"; };
 		EB291FF01EA42E8800548712 /* Whisper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Whisper.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/TwitterClient-aiqvwetekojqbsggrrguqmyvwwlg/Build/Products/Debug-iphonesimulator/Whisper/Whisper.framework"; sourceTree = "<group>"; };
+		EB291FF41EA432F200548712 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		EB291FF61EA4331200548712 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = "Pods/../build/Debug-iphoneos/Onboard/Onboard.framework"; sourceTree = "<group>"; };
+		EB291FFC1EA43B3E00548712 /* twitterbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = twitterbg.jpg; sourceTree = "<group>"; };
 		EB48C6001EA046D300302AB2 /* TwitterClient2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient2.swift; sourceTree = "<group>"; };
 		EB48C6071EA05A8E00302AB2 /* TweetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetView.swift; sourceTree = "<group>"; };
 		EB48C60A1EA05A9400302AB2 /* Date+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+ext.swift"; sourceTree = "<group>"; };
@@ -211,6 +216,7 @@
 		5C06CACCE5FEF963794C486C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB291FF61EA4331200548712 /* Onboard.framework */,
 				EB291FF01EA42E8800548712 /* Whisper.framework */,
 				EB7221461EA3148E0003CF80 /* Font_Awesome_Swift.framework */,
 				EBF23EF01EA1BDAF00E1E746 /* FontAwesome_swift.framework */,
@@ -241,9 +247,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EB291FFA1EA43B3E00548712 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EB291FFC1EA43B3E00548712 /* twitterbg.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		EB48C6061EA05A8E00302AB2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB291FFA1EA43B3E00548712 /* images */,
 				EB48C6071EA05A8E00302AB2 /* TweetView.swift */,
 				EB48C60C1EA05AC800302AB2 /* TweetView.xib */,
 				EB48C6121EA0682B00302AB2 /* TweetCell.swift */,
@@ -289,6 +304,7 @@
 				EB6FAE341E9F073D00A53475 /* HomeViewController.swift */,
 				EB48C61A1EA07B0F00302AB2 /* TweetDetailViewController.swift */,
 				EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */,
+				EB291FF41EA432F200548712 /* OnboardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -410,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB291FFE1EA43B3E00548712 /* twitterbg.jpg in Resources */,
 				00FB668B1E9D16C7005D39B3 /* LaunchScreen.storyboard in Resources */,
 				EB291FEF1EA41E9800548712 /* TweetCell2.xib in Resources */,
 				00FB66881E9D16C7005D39B3 /* Assets.xcassets in Resources */,
@@ -582,6 +599,7 @@
 				EB6FAE321E9F06E100A53475 /* TwitterClient.swift in Sources */,
 				EB6FAE2B1E9F06D700A53475 /* BaseJsonModel.swift in Sources */,
 				EB6FAE2C1E9F06D700A53475 /* Tweet.swift in Sources */,
+				EB291FF51EA432F200548712 /* OnboardViewController.swift in Sources */,
 				EB48C60B1EA05A9400302AB2 /* Date+ext.swift in Sources */,
 				EBF23EF31EA1D51F00E1E746 /* ComposeTweetViewController.swift in Sources */,
 				EB6FAE2D1E9F06D700A53475 /* TwitterUser.swift in Sources */,
@@ -751,6 +769,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FontAwesome.swift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Onboard",
 				);
 				INFOPLIST_FILE = TwitterClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -771,6 +790,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FontAwesome.swift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Onboard",
 				);
 				INFOPLIST_FILE = TwitterClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

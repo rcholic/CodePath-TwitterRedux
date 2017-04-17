@@ -44,7 +44,7 @@ class TweetCell: UITableViewCell {
             tweetTextLabel.text = twt.text ?? "no content"
             
             if let createdAt = twt.createdAt {
-                print("tweetedAt: \(createdAt))")
+//                print("tweetedAt: \(createdAt))")
                 let now = Date().toTimezone(TimeZoneEnum.utc, dateFormat: TWT_DATE_FORMAT)
                 timeAgoLabel.text = "\(now.timeSince(createdAt))"
             }

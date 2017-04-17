@@ -16,7 +16,8 @@ import ObjectMapper
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -46,10 +47,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 _ = DataManager.shared.save(Date(), for: DataKey.lastLogin) // last login date
             }
             
-            TwitterClient.shared.retrieveCurrentUser(success: { (twtUser) in
+            TwitterClient.shared.retrieveCurrentUser(success: { [weak self] (twtUser) in
                 if let curUser = twtUser, let jsonStr = curUser.toJSONString() {
                     _ = DataManager.shared.save(jsonStr, for: DataKey.twitterUser)
                 }
+                if let homeVC = self?.mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
+
+                    let nav = UINavigationController(rootViewController: homeVC)
+                    self?.window?.rootViewController = nav
+                }
+
             }, failure: { (error) in
                 print("error: \(error)")
             })
