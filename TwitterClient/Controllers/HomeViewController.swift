@@ -12,9 +12,6 @@ import Font_Awesome_Swift
 import ObjectMapper
 import SwiftyJSON
 
-// example: https://github.com/tejen/codepath-twitter/blob/master/Twitter/Twitter/TwitterClient.swift
-// assignment: https://courses.codepath.com/courses/intro_to_ios/unit/3#!assignment
-
 class HomeViewController: UIViewController {
 
     // TODO: distinguish infinite reload and drag to refresh: handle the array tweets differently!
