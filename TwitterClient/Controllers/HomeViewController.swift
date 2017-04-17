@@ -140,7 +140,7 @@ class HomeViewController: UIViewController {
         guard let _ = DataManager.shared.getCurUser() else { return }
         
         if let targetVC = storyboard?.instantiateViewController(withIdentifier: "ComposeBoard") as? ComposeTweetViewController {
-
+            targetVC.delegate = self
             self.present(targetVC, animated: true, completion: nil)
         }
     }
@@ -192,5 +192,14 @@ extension HomeViewController: UIScrollViewDelegate {
             }
             loadTweets(maxId: lowestTweetId)
         }
+    }
+}
+
+extension HomeViewController: ComposeTweetViewControllerDelegate {
+    
+    func composeTweetViewController(composeVC: ComposeTweetViewController, tweet: Tweet) {
+        print("inserting tweet: \(tweet)")
+        tweets.insert(tweet, at: 0) // prepend the new created tweet
+        self.tableView.reloadData()
     }
 }

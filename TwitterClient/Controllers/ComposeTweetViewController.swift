@@ -11,11 +11,18 @@ import ObjectMapper
 import AFNetworking
 import Whisper
 
+@objc protocol ComposeTweetViewControllerDelegate: class {
+    
+    @objc func composeTweetViewController(composeVC: ComposeTweetViewController, tweet: Tweet)
+}
+
 class ComposeTweetViewController: UIViewController {
 
     var curUser: TwitterUser?
     
     var replyToTweet: Tweet?
+    
+    weak var delegate: ComposeTweetViewControllerDelegate?
     
     @IBOutlet var profileImageView: UIImageView!
     
@@ -73,6 +80,9 @@ class ComposeTweetViewController: UIViewController {
 
         TwitterClient.shared.sendTweet(text: textView.text, replyTo: replyToTweet) { [weak self] (updatedTweet) in
             Whisper.show(whistle: Murmur(title: "Tweet Successful!"), action: WhistleAction.show(3))
+            if self?.replyToTweet == nil {
+                self?.delegate?.composeTweetViewController(composeVC: self!, tweet: updatedTweet!)
+            }
             self?.dismiss(animated: true, completion: nil)
         }
     }

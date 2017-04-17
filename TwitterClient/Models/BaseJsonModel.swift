@@ -8,7 +8,7 @@
 import UIKit
 import ObjectMapper
 
-class BaseJsonModel: Mappable {
+class BaseJsonModel: NSObject, Mappable {
     
     required init?(map: Map) {
         

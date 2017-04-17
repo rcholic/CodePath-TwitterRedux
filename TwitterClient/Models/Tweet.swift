@@ -16,7 +16,7 @@
 import ObjectMapper
 
 // reference: https://dev.twitter.com/rest/reference/get/statuses/home_timeline
-class Tweet: BaseJsonModel, CustomStringConvertible {
+class Tweet: BaseJsonModel {
     
     var id: Int64?
     var text: String?
@@ -39,7 +39,7 @@ class Tweet: BaseJsonModel, CustomStringConvertible {
         isFavorited <- map["favorited"]
     }
     
-    public var description: String {
+    public override var description: String {
         return "isRetweeted: \(self.isRetweeted); author: \(author)"
     }
 }
