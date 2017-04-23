@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import SVProgressHUD
 
 class ProfileViewController: UIViewController, TweetListViewDelegate {
     
@@ -20,7 +21,7 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var tweetsCountLabel: UILabel!
     
-//    TODO: get the user's updated profile!
+//    TODO: get the user's updated profile?
     
     var author: TwitterUser? = nil
     
@@ -73,7 +74,9 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
     }
     
     private func loadTimelinesFor(_ user: TwitterUser, _ callback: (() -> Void)? = nil) {
+        let username = user.name ?? user.screenName
         
+        SVProgressHUD.showInfo(withStatus: "Loading \(username)'s Tweets For You)")        
         TwitterClient.shared.getTimelinesFor(screenName: user.screenName, count: 200, success: { (tweets) in
 
             DispatchQueue.main.async {
@@ -81,6 +84,7 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
                 if let cb = callback {
                     cb() // trigger the callback
                 }
+                SVProgressHUD.dismiss()
             }
         }, failure: { (error) in
             print("error in getting user's timeline: \(error)")
