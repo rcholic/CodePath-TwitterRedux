@@ -88,7 +88,7 @@ class TweetView: UIView {
     private func bindContent(_ tweet: Tweet?) {
         
         guard let twt = tweet else { return }
-        NSLog("binging tweet to the tweet view")
+        NSLog("binding tweet to the tweet view")
         if let author = twt.author {
             if let profileImageUrl = author.profileImgUrl {
                 authorProfileImageView.setImageWith(profileImageUrl)

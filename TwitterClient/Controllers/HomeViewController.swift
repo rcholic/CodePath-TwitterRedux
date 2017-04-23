@@ -12,7 +12,7 @@ import Font_Awesome_Swift
 import ObjectMapper
 import SwiftyJSON
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, TweetCellDelegate {
 
     // TODO: distinguish infinite reload and drag to refresh: handle the array tweets differently!
     @IBOutlet weak var loginButton: UIBarButtonItem!
@@ -149,6 +149,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func tweetCell(cell: TweetCell, didTap profileImageView: UIImageView, with tweet: Tweet) {
+        
+        if let author = tweet.author, let profileVC = mainStoryBoard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileViewController {
+            profileVC.author = author
+//            hamburgerVC.present(profileVC)
+            hamburgerVC.navigationController?.pushViewController(profileVC, animated: true) // this causes the navbar to cover part of the profileVC view!! FIXME
+        }
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -164,6 +172,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TweetCell
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         
         return cell
     }

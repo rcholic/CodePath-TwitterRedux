@@ -10,6 +10,10 @@ import UIKit
 import AFNetworking
 import ObjectMapper
 
+@objc protocol TweetCellDelegate: class {
+    @objc func tweetCell(cell: TweetCell, didTap profileImageView: UIImageView, with tweet: Tweet)
+}
+
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var authoProfileImageView: UIImageView!
@@ -17,6 +21,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var timeAgoLabel: UILabel!
     @IBOutlet weak var authorScreenLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
+    
+    weak var delegate: TweetCellDelegate?
     
     internal var tweet: Tweet! {
         didSet {
@@ -26,11 +32,20 @@ class TweetCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        authoProfileImageView.layer.cornerRadius = 3.0        
+        authoProfileImageView.layer.cornerRadius = 3.0
+        authoProfileImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.addTarget(self, action: #selector(self.didTapOnProfileImageView(tapGesture:)))
+        tapGesture.numberOfTapsRequired = 1
+        authoProfileImageView.addGestureRecognizer(tapGesture)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    @objc private func didTapOnProfileImageView(tapGesture: UITapGestureRecognizer) {
+        delegate?.tweetCell(cell: self, didTap: self.authoProfileImageView, with: self.tweet)
     }
     
     private func bind(_ twt: Tweet) {

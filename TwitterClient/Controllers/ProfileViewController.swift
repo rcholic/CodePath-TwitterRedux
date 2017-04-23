@@ -22,7 +22,9 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
     
 //    TODO: get the user's updated profile!
     
-    private var curUser: TwitterUser? = nil {
+    var author: TwitterUser? = nil
+    
+    var curUser: TwitterUser? = nil {
         didSet {
             if let user = curUser {
                 // hook up the views
@@ -58,10 +60,16 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
     
     private func initPhase2() {
         title = "Profile"
-        curUser = DataManager.shared.getCurUser()
+        if author != nil {
+            curUser = author!
+        } else {
+            curUser = DataManager.shared.getCurUser()
+        }
         profileAvatarImageView.layer.cornerRadius = 3.0
         profileAvatarImageView.layer.borderWidth = 2.0
         profileAvatarImageView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        tweetListView.delegate = self
     }
     
     private func loadTimelinesFor(_ user: TwitterUser, _ callback: (() -> Void)? = nil) {
@@ -82,7 +90,9 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
     func tweetListView(_ tweetListView: TweetListView, didSelect tweet: Tweet) {
         if let tweetDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "TweetDetailVC") as? TweetDetailViewController {
             tweetDetailVC.tweet = tweet
-            hamburgerVC.present(tweetDetailVC)
+//            hamburgerVC.present(tweetDetailVC)
+//            hamburgerVC.navigationController?.pushViewController(tweetDetailVC, animated: true)
+            present(tweetDetailVC, animated: true, completion: nil)
         }
     }
     
