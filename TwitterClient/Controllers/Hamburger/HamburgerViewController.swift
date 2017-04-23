@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Font_Awesome_Swift
 
 class HamburgerViewController: UIViewController {
     
@@ -17,13 +18,16 @@ class HamburgerViewController: UIViewController {
     // left margin constraint for the content view
     @IBOutlet weak var leftMarginConstraint: NSLayoutConstraint!
 
+    // top margin constraint for the content view
     @IBOutlet weak var topMarginConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var menuTopMarginConstraint: NSLayoutConstraint!
     
     private (set) var originalLeftMargin: CGFloat!
     
-    private let contentViewOffset: CGFloat = 100
+    private var composeButton: UIBarButtonItem!
+    
+    private let contentViewOffset: CGFloat = 90
     
     var menuViewController: UIViewController! {
         didSet(oldViewController) {
@@ -40,13 +44,12 @@ class HamburgerViewController: UIViewController {
                 oldContentVC.view.removeFromSuperview()
                 oldContentVC.didMove(toParentViewController: nil)
             }
-            print("setting content VC in hamburger!")
             
             view.layoutIfNeeded()
             contentViewController.willMove(toParentViewController: self)
             contentView.addSubview(contentViewController.view)
             contentViewController.didMove(toParentViewController: self)
-            self.title = contentViewController.title ?? ""
+            self.title = contentViewController.title ?? "" // update navbar title
             UIView.animate(withDuration: 0.3) {
                 self.leftMarginConstraint.constant = 0 // show the content ful screen
                 self.view.layoutIfNeeded()
@@ -59,15 +62,35 @@ class HamburgerViewController: UIViewController {
         menuTopMarginConstraint.constant = NAVBAR_HEIGHT
         topMarginConstraint.constant = NAVBAR_HEIGHT
         contentView.addGestureRecognizer(panGesture)
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.white
+        ]
+        composeButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.presentTweetView(sender:)))
+        composeButton.setFAText(prefixText: "", icon: FAType.FATwitter, postfixText: " Tweet", size: 17)
+        navigationItem.rightBarButtonItem = composeButton
     }
     
     private func checkLoginStatus() {
         
         if TwitterClient.shared.isSignedIn() {
-            
+            composeButton.isEnabled = true
             if let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
                 self.contentViewController = timelineVC
             }
+        } else {
+            composeButton.isEnabled = false
+            if let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as? OnboardViewController {
+                self.contentViewController = onboardVC
+            }
+        }
+    }
+    
+    @objc private func presentTweetView(sender: UIBarButtonItem) {
+        if let tweetVC = mainStoryBoard.instantiateViewController(withIdentifier: "ComposeBoard") as? ComposeTweetViewController {
+//            self.contentViewController = tweetVC
+            // TODO: what if reply to a tweet?
+            self.navigationController?.pushViewController(tweetVC, animated: true)
         }
     }
     

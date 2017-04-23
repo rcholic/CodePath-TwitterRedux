@@ -33,10 +33,6 @@ class HomeViewController: UIViewController {
             if isLoggedIn {
                 self.loginButton.title = "Logout"
                 self.composeButton.isEnabled = true
-                if let lastLogin = DataManager.shared.retrieve(for: DataKey.lastLogin) as? Date {
-//                    print("last login: \(lastLogin)")
-                }
-                
             } else {
                 self.composeButton.isEnabled = false
                 self.loginButton.title = "Login"
@@ -55,7 +51,7 @@ class HomeViewController: UIViewController {
         
         if !TwitterClient.shared.isSignedIn() {
             if let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as? OnboardViewController, let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController {
-//               present(onboardVC, animated: false, completion: nil)
+
                 hamburgerVC.contentViewController = onboardVC
             }
         }
@@ -90,7 +86,7 @@ class HomeViewController: UIViewController {
             tweets.removeAll() // remove all the items, if any
         }
         
-        TwitterClient.shared.getHomeTimeLine(maxId: maxId, success: { [weak self] (tweets) in            
+        TwitterClient.shared.getHomeTimeLine(maxId: maxId, success: { [weak self] (tweets) in
             
             DispatchQueue.main.async {
                 self?.isLoadingMoreTweets = false

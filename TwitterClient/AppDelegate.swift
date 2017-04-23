@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController, let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
 
-                    hamburgerVC.contentViewController = timelineVC
+                    hamburgerVC.contentViewController = timelineVC // DELETE this
                     self?.window?.rootViewController = hamburgerVC
                 }
 

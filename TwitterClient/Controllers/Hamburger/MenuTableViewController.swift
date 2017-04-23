@@ -27,7 +27,7 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         //        tableView.backgroundColor = TWITTER_BLUE
         //        tableView.tintColor
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140.0
+        tableView.estimatedRowHeight = 240.0
         tableView.tableFooterView = UIView() // no empty cells
         
         populateMenuVCs()
@@ -35,15 +35,16 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private func populateMenuVCs() {
         // profile, timeline, mentions, accounts
-        let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as! OnboardViewController
-        
+//        let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as! OnboardViewController
+        let profileVC = mainStoryBoard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
+  
         let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
         
         let mentionsVC = mainStoryBoard.instantiateViewController(withIdentifier: "MentionsVC") as! MentionsViewController
         
         let accountsVC = mainStoryBoard.instantiateViewController(withIdentifier: "AccountsVC") as! AccountsViewController
         
-        menuVC["Onboard"] = onboardVC
+        menuVC["Profile"] = profileVC
         menuVC["Timeline"] = timelineVC
         menuVC["Mentions"] = mentionsVC
         menuVC["Accounts"] = accountsVC
