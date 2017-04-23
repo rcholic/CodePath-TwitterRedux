@@ -119,6 +119,10 @@ class HamburgerViewController: UIViewController {
         }
     }
     
+    internal func present(_ viewcontroller: UIViewController) {
+        self.contentViewController = viewcontroller
+    }
+    
     private lazy var panGesture: UIPanGestureRecognizer = {
         
         let gesture = UIPanGestureRecognizer()

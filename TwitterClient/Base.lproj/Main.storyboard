@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,13 +68,153 @@
                     <view key="view" contentMode="scaleToFill" id="quD-lR-4iT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B4c-xB-ocZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ZQ7-Cz-N27"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xKk-Zs-mYr">
+                                <rect key="frame" x="24" y="65" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="1z4-mu-WwL"/>
+                                    <constraint firstAttribute="width" constant="66" id="ize-n1-yHD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIF-yu-T5t">
+                                <rect key="frame" x="24" y="139" width="117" height="17.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Vince Magistrado">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name="Arial-Black"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@vmagistrado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEv-58-0xU">
+                                <rect key="frame" x="267" y="140" width="87" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="YZ5-xJ-kqR">
+                                <rect key="frame" x="24" y="164.5" width="275" height="39.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fmf-GU-hWf">
+                                        <rect key="frame" x="0.0" y="0.0" width="58" height="39.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tB-4O-WwW">
+                                                <rect key="frame" x="0.0" y="0.0" width="17.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCk-hU-omg">
+                                                <rect key="frame" x="0.0" y="19" width="58" height="20.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="TWEETS">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.2604767628205128" green="0.2604767628205128" blue="0.2604767628205128" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="15" name="Avenir-Book"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-nj-9iH">
+                                        <rect key="frame" x="77" y="0.0" width="90" height="39.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="65" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bku-MA-wA6">
+                                                <rect key="frame" x="0.0" y="0.0" width="17.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7O4-tt-ipt">
+                                                <rect key="frame" x="0.0" y="19" width="90" height="20.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="FOLLOWING">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.25400641025641024" green="0.25400641025641024" blue="0.25400641025641024" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="15" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DT7-3B-65r">
+                                        <rect key="frame" x="186" y="0.0" width="89" height="39.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-Ed-qiC">
+                                                <rect key="frame" x="0.0" y="0.0" width="16.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2l-N1-z1n">
+                                                <rect key="frame" x="0.0" y="19" width="89" height="20.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="FOLLOWERS">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.25286458333333328" green="0.25286458333333328" blue="0.25286458333333328" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="15" name="Avenir-Book"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONu-jU-RUV" customClass="TweetListView" customModule="TwitterClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="212" width="375" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B4c-xB-ocZ" firstAttribute="leading" secondItem="quD-lR-4iT" secondAttribute="leading" id="07Q-jX-7lx"/>
+                            <constraint firstItem="xKk-Zs-mYr" firstAttribute="top" secondItem="nTl-MG-6wh" secondAttribute="bottom" constant="45" id="Kye-Iw-Ylj"/>
+                            <constraint firstAttribute="trailing" secondItem="B4c-xB-ocZ" secondAttribute="trailing" id="NYd-yq-BrL"/>
+                            <constraint firstItem="zIF-yu-T5t" firstAttribute="leading" secondItem="quD-lR-4iT" secondAttribute="leadingMargin" constant="8" id="OvW-pc-xoL"/>
+                            <constraint firstItem="zIF-yu-T5t" firstAttribute="top" secondItem="xKk-Zs-mYr" secondAttribute="bottom" constant="8" id="RuT-sy-NQu"/>
+                            <constraint firstItem="6CF-92-Iqm" firstAttribute="top" secondItem="ONu-jU-RUV" secondAttribute="bottom" id="Vb5-E8-dXX"/>
+                            <constraint firstAttribute="trailing" secondItem="ONu-jU-RUV" secondAttribute="trailing" id="XQ6-iT-DMJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JEv-58-0xU" secondAttribute="trailing" constant="5" id="aZk-mN-fR5"/>
+                            <constraint firstItem="ONu-jU-RUV" firstAttribute="top" secondItem="YZ5-xJ-kqR" secondAttribute="bottom" constant="8" id="h06-Sg-QoB"/>
+                            <constraint firstItem="YZ5-xJ-kqR" firstAttribute="leading" secondItem="quD-lR-4iT" secondAttribute="leadingMargin" constant="8" id="irb-Q6-beg"/>
+                            <constraint firstItem="B4c-xB-ocZ" firstAttribute="top" secondItem="quD-lR-4iT" secondAttribute="top" id="oHe-Ba-mt3"/>
+                            <constraint firstItem="ONu-jU-RUV" firstAttribute="leading" secondItem="quD-lR-4iT" secondAttribute="leading" id="rG1-qk-7Nq"/>
+                            <constraint firstItem="YZ5-xJ-kqR" firstAttribute="top" secondItem="zIF-yu-T5t" secondAttribute="bottom" constant="8" id="vzd-EC-Zib"/>
+                            <constraint firstItem="xKk-Zs-mYr" firstAttribute="leading" secondItem="quD-lR-4iT" secondAttribute="leadingMargin" constant="8" id="xuY-fi-lU8"/>
+                            <constraint firstItem="JEv-58-0xU" firstAttribute="centerY" secondItem="zIF-yu-T5t" secondAttribute="centerY" id="ze5-K3-4fp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="n9f-Al-pbC"/>
+                    <connections>
+                        <outlet property="followersCountLabel" destination="dYo-Ed-qiC" id="5c3-rX-P0H"/>
+                        <outlet property="followingCountLabel" destination="bku-MA-wA6" id="qaa-3J-ITh"/>
+                        <outlet property="profileAvatarImageView" destination="xKk-Zs-mYr" id="MRh-TT-25c"/>
+                        <outlet property="profileBgImageView" destination="B4c-xB-ocZ" id="hpv-6i-XTt"/>
+                        <outlet property="profileFullname" destination="zIF-yu-T5t" id="do4-Xn-LIE"/>
+                        <outlet property="screenNameLabel" destination="JEv-58-0xU" id="h9A-Q5-lLw"/>
+                        <outlet property="tweetListView" destination="ONu-jU-RUV" id="cEg-f4-AgZ"/>
+                        <outlet property="tweetsCountLabel" destination="5tB-4O-WwW" id="Aez-56-03f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="No0-hJ-6Ob" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="134"/>
+            <point key="canvasLocation" x="1031.2" y="134.48275862068968"/>
         </scene>
         <!--Mentions-->
         <scene sceneID="zTG-du-x5q">
@@ -126,22 +267,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dd2-XJ-foU" customClass="TweetView" customModule="TwitterClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="170"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="170"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="F4P-x3-Z47"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ff-Np-CeT">
+                                <rect key="frame" x="335" y="20" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5ZI-2t-NX9"/>
+                                    <constraint firstAttribute="width" constant="20" id="GAR-Lq-VvI"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.020543188050000001" blue="0.14217721420000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="x"/>
+                                <connections>
+                                    <action selector="didTapCloseBtn:" destination="A7z-qC-lLa" eventType="touchUpInside" id="F2y-B8-lbN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dd2-XJ-foU" firstAttribute="top" secondItem="eAP-dE-Yud" secondAttribute="bottom" id="6gs-xO-6Qf"/>
+                            <constraint firstItem="dd2-XJ-foU" firstAttribute="top" secondItem="eAP-dE-Yud" secondAttribute="bottom" constant="15" id="6gs-xO-6Qf"/>
                             <constraint firstAttribute="trailing" secondItem="dd2-XJ-foU" secondAttribute="trailing" id="G41-7m-XwR"/>
+                            <constraint firstAttribute="trailing" secondItem="0Ff-Np-CeT" secondAttribute="trailing" constant="20" symbolic="YES" id="Jhp-5l-cIp"/>
                             <constraint firstItem="dd2-XJ-foU" firstAttribute="leading" secondItem="0cU-aN-d8S" secondAttribute="leading" id="buh-Gd-TRm"/>
+                            <constraint firstItem="0Ff-Np-CeT" firstAttribute="top" secondItem="0cU-aN-d8S" secondAttribute="top" constant="20" symbolic="YES" id="pVE-Z3-TKU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AFN-Ni-zjx"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="closeButton" destination="0Ff-Np-CeT" id="vm0-CH-fyq"/>
                         <outlet property="tweetView" destination="dd2-XJ-foU" id="SK5-gS-YgF"/>
                     </connections>
                 </viewController>
@@ -169,7 +326,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timothy Lee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsz-2B-yQW">
-                                <rect key="frame" x="73" y="63" width="85" height="18"/>
+                                <rect key="frame" x="73" y="63" width="84.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -205,7 +362,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining Characters:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thj-kl-WeO">
-                                <rect key="frame" x="199" y="221" width="156" height="18"/>
+                                <rect key="frame" x="199.5" y="221" width="155.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -378,7 +535,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QQe-jO-laR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kpY-bf-hXa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kpY-bf-hXa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -392,47 +549,11 @@
             <point key="canvasLocation" x="856.79999999999995" y="-543.77811094452773"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="6MH-sE-aJI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DSc-dP-eZv" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tq2-Hi-dax">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="A7z-qC-lLa" kind="relationship" relationship="rootViewController" id="hba-am-u7Q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xa2-7Z-4qQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2472.8000000000002" y="-546.47676161919048"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="R32-4o-Vuh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b3F-iA-EPV" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GQk-cJ-Lgo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bcB-Qj-QdT" kind="relationship" relationship="rootViewController" id="zmZ-0k-xiI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C5l-8E-fuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="608.79999999999995" y="133.5832083958021"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="a7L-qm-tgg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SeZ-X4-kEZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BVK-fb-lPR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BVK-fb-lPR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -450,7 +571,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dZS-xB-abe" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y7A-7y-7zs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Y7A-7y-7zs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

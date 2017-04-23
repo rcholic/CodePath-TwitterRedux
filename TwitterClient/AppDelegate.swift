@@ -12,7 +12,8 @@ import BDBOAuth1Manager
 import SwiftyJSON
 import ObjectMapper
 
-public let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+internal let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+internal let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as! HamburgerViewController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,8 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navbarAppearance.barTintColor = TWITTER_BLUE
         navbarAppearance.tintColor = UIColor.white
         
-//        let hamburgerVC = window!.rootViewController as! HamburgerViewController
-        let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as! HamburgerViewController
         hamburgerVC.title = "Twitter Client"
         self.window?.rootViewController = UINavigationController(rootViewController: hamburgerVC) // convert hamburgerVC to a navigation controller
         let menuVC = mainStoryBoard.instantiateViewController(withIdentifier: "MenuVC") as! MenuTableViewController
@@ -62,8 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     _ = DataManager.shared.save(jsonStr, for: DataKey.twitterUser)
                 }
                 
-                if let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController, let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
-
+                if let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
                     hamburgerVC.contentViewController = timelineVC // DELETE this
                     self?.window?.rootViewController = hamburgerVC
                 }

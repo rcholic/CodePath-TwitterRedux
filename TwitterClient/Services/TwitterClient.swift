@@ -63,7 +63,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
     internal func getHomeTimeLine(maxId: Int64? = nil, success: @escaping ([Tweet]) -> Void, failure: @escaping (Error?) -> Void) {
         var params : [String : Any] = ["count": 20]
         if let max = maxId {
-            print("loading from max id: \(max)")
             params["max_id"] = max
         }
         
@@ -73,11 +72,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             let json = JSON(response)
             var results: [Tweet] = []
             if let tweets = Mapper<Tweet>().mapArray(JSONObject: json.arrayObject) {
-                for tweet in tweets {
-                    NSLog("tweet.user: \(tweet.author?.name)")
-//                    print("tweet created at: \(tweet.createdAt)")
-                    results = tweets
-                }
+                results = tweets
             }
             
             success(results)
@@ -158,6 +153,47 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             let tweet = Mapper<Tweet>().map(JSON: JSON(response).dictionaryObject!)
             success(tweet)
         })
+    }
+    
+    // reference to user timeline: https://dev.twitter.com/rest/reference/get/statuses/user_timeline
+    
+    // MARK: screenName: the screen name of the user for whom to return results for; count: max number of tweets to fetch
+    internal func getTimelinesFor(screenName: String? = nil, count: Int? = 200, success: @escaping ([Tweet]) -> Void, failure: @escaping (Error?) -> Void) {
+        
+        var targetUrl = "1.1/statuses/user_timeline.json?"
+        if screenName != nil {
+            targetUrl += "screen_name=\(screenName!)&"
+        }
+        if count != nil {
+            targetUrl += "count=\(count!)"
+        }
+        
+        get(targetUrl, parameters: nil, success: { (operation, response) in
+//            print("user timelines response: \(response)")
+            let json = JSON(response)
+            var results: [Tweet] = []
+            
+            if let tweets = Mapper<Tweet>().mapArray(JSONObject: json.arrayObject) {
+                results = tweets
+            }
+
+            // 
+//            var updatedUser: TwitterUser? = nil // get the user's most updated info e.g. tweets count.
+//            if let res = response as? [String: Any] {
+//                print("user profile? \(res["user"])")
+//            }
+//            print("user in timelines1: \(json["user"].dictionary)")
+//            print("user in timelines2: \(json["user"].dictionaryObject)")
+//            print("user in timelines3: \(json["user"].dictionaryValue)")
+//            if let user = Mapper<TwitterUser>().map(JSONObject: json["user"].dictionaryObject) {
+//                print("updated user background image: \(user.profileBackgroundImageUrl)")
+//            }
+            success(results)
+            
+        }) { (failedOperation, error) in
+            
+            failure(error)
+        }
     }
     
 }

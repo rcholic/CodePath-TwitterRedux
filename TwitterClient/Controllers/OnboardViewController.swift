@@ -22,7 +22,7 @@ class OnboardViewController: UIViewController {
         
         if TwitterClient.shared.isSignedIn() {
             
-            if let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController, let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController {
+            if let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
 
                 hamburgerVC.contentViewController = timelineVC
             }

@@ -19,23 +19,21 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // setup tableview
+        tableView.backgroundColor = TWITTER_BLUE
+        tableView.tintColor = TWITTER_BLUE
         tableView.delegate = self
         tableView.dataSource = self
-        
-        //        tableView.backgroundColor = TWITTER_BLUE
-        //        tableView.tintColor
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 240.0
+        tableView.estimatedRowHeight = 150.0
         tableView.tableFooterView = UIView() // no empty cells
         
         populateMenuVCs()
     }
     
     private func populateMenuVCs() {
-        // profile, timeline, mentions, accounts
-//        let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as! OnboardViewController
+
         let profileVC = mainStoryBoard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
   
         let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
@@ -50,9 +48,12 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         menuVC["Accounts"] = accountsVC
         
         menus = Array<String>(menuVC.keys)
-//        tableView.reloadData()
-        
-        hamburgerVC.contentViewController = timelineVC // default to timelineVC
+        if TwitterClient.shared.isSignedIn() {
+            self.hamburgerVC.contentViewController = timelineVC // default to timelineVC
+        } else {
+            let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as! OnboardViewController
+            self.hamburgerVC.present(onboardVC)
+        }
     }
     
     // MARK: - Table view data source
@@ -72,7 +73,8 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = menus[indexPath.row]
         cell.textLabel?.textColor = UIColor.black
-        
+        cell.backgroundColor = UIColor.clear
+//        cell.contentView.backgroundColor = UIColor.clear
         return cell
     }
     
@@ -80,7 +82,11 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
         let vcName = menus[indexPath.row]
         
-        hamburgerVC.contentViewController = menuVC[vcName] // show the targetVC in the content view
+        self.hamburgerVC.contentViewController = menuVC[vcName] // show the targetVC in the content view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120.0
     }
     
     /*

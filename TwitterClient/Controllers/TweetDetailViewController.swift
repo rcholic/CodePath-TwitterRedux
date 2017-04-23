@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Font_Awesome_Swift
 
 class TweetDetailViewController: UIViewController, TweetViewDelegate {
 
     @IBOutlet var tweetView: TweetView!
+    @IBOutlet weak var closeButton: UIButton!
+    
     internal var tweet: Tweet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Tweet Detail"
+        title = "Detail"
+        self.view.bringSubview(toFront: closeButton)
+        closeButton.setFAIcon(icon: FAType.FAWindowClose, forState: UIControlState.normal)
+        
         if let twt = tweet {
             tweetView.tweet = twt // use twt as temporary placeholder
             tweetView.delegate = self
@@ -33,6 +39,11 @@ class TweetDetailViewController: UIViewController, TweetViewDelegate {
         }) { (error) in
             NSLog("error: \(error)")
         }
+    }
+    
+    
+    @IBAction func didTapCloseBtn(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     func tweetView(_ tweetView: TweetView, didTap: TweetViewButtonType) {

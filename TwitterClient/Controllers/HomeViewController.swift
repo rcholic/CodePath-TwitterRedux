@@ -43,23 +43,26 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         verifyLoginStatus() // if not logged in, redirect
-        initPhase2()
-        loadTweets(maxId: nil)
     }
     
     private func verifyLoginStatus() {
         
         if !TwitterClient.shared.isSignedIn() {
-            if let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as? OnboardViewController, let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController {
-
-                hamburgerVC.contentViewController = onboardVC
+            if let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as? OnboardViewController {
+                hamburgerVC.present(onboardVC)
             }
+            return
+        } else {
+            hamburgerVC.present(self)
         }
+        
+        initPhase2()
+        loadTweets(maxId: nil)
     }
     
     private func initPhase2() {
         
-        self.title = "Home Timelines"
+        self.title = "Timelines"
         composeButton.setFAText(prefixText: "", icon: FAType.FATwitter, postfixText: " Tweet", size: 17)
         
         tableView.dataSource = self
@@ -172,7 +175,7 @@ extension HomeViewController: UITableViewDelegate {
         
         if let targetVC = self.storyboard?.instantiateViewController(withIdentifier: "TweetDetailVC") as? TweetDetailViewController {
             targetVC.tweet = tweets[indexPath.row]
-            self.navigationController?.pushViewController(targetVC, animated: true)
+            hamburgerVC.present(targetVC, animated: true, completion: nil)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
