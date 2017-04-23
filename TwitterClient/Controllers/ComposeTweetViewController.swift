@@ -39,6 +39,7 @@ class ComposeTweetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Compose Tweet"
         setupView()
     }
     

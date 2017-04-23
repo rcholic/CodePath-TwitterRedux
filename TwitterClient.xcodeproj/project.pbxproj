@@ -42,6 +42,11 @@
 		EB6FAE351E9F073D00A53475 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE341E9F073D00A53475 /* HomeViewController.swift */; };
 		EB7221471EA3148E0003CF80 /* Font_Awesome_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7221461EA3148E0003CF80 /* Font_Awesome_Swift.framework */; };
 		EB7221491EA317EE0003CF80 /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7221481EA317EE0003CF80 /* UIColor+ext.swift */; };
+		EB75B8971EAC40F600DB4560 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75B8961EAC40F600DB4560 /* ProfileViewController.swift */; };
+		EB75B8991EAC410400DB4560 /* MentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75B8981EAC410400DB4560 /* MentionsViewController.swift */; };
+		EB75B89B1EAC410F00DB4560 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75B89A1EAC410F00DB4560 /* AccountsViewController.swift */; };
+		EB75B89D1EAC44AB00DB4560 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75B89C1EAC44AB00DB4560 /* HamburgerViewController.swift */; };
+		EB75B89F1EAC4F5900DB4560 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB75B89E1EAC4F5900DB4560 /* MenuTableViewController.swift */; };
 		EBF23EF31EA1D51F00E1E746 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +119,11 @@
 		EB6FAE341E9F073D00A53475 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EB7221461EA3148E0003CF80 /* Font_Awesome_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Font_Awesome_Swift.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/TwitterClient-aiqvwetekojqbsggrrguqmyvwwlg/Build/Products/Debug-iphonesimulator/Font-Awesome-Swift/Font_Awesome_Swift.framework"; sourceTree = "<group>"; };
 		EB7221481EA317EE0003CF80 /* UIColor+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
+		EB75B8961EAC40F600DB4560 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EB75B8981EAC410400DB4560 /* MentionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsViewController.swift; sourceTree = "<group>"; };
+		EB75B89A1EAC410F00DB4560 /* AccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		EB75B89C1EAC44AB00DB4560 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
+		EB75B89E1EAC4F5900DB4560 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		EBF23EF01EA1BDAF00E1E746 /* FontAwesome_swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome_swift.framework; path = "Pods/../build/Debug-iphoneos/FontAwesome.swift/FontAwesome_swift.framework"; sourceTree = "<group>"; };
 		EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
 		F8FD4E20AF19BAA4B9F98066 /* Pods_TwitterClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,12 +311,25 @@
 		EB6FAE331E9F06EA00A53475 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EB75B8911EAC3F3900DB4560 /* Hamburger */,
 				EB6FAE341E9F073D00A53475 /* HomeViewController.swift */,
 				EB48C61A1EA07B0F00302AB2 /* TweetDetailViewController.swift */,
 				EBF23EF21EA1D51F00E1E746 /* ComposeTweetViewController.swift */,
 				EB291FF41EA432F200548712 /* OnboardViewController.swift */,
+				EB75B8961EAC40F600DB4560 /* ProfileViewController.swift */,
+				EB75B8981EAC410400DB4560 /* MentionsViewController.swift */,
+				EB75B89A1EAC410F00DB4560 /* AccountsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EB75B8911EAC3F3900DB4560 /* Hamburger */ = {
+			isa = PBXGroup;
+			children = (
+				EB75B89C1EAC44AB00DB4560 /* HamburgerViewController.swift */,
+				EB75B89E1EAC4F5900DB4560 /* MenuTableViewController.swift */,
+			);
+			path = Hamburger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +409,7 @@
 				TargetAttributes = {
 					00FB667C1E9D16C7005D39B3 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = U6H8QF8EBV;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -598,7 +622,11 @@
 			files = (
 				EB6FAE321E9F06E100A53475 /* TwitterClient.swift in Sources */,
 				EB6FAE2B1E9F06D700A53475 /* BaseJsonModel.swift in Sources */,
+				EB75B89F1EAC4F5900DB4560 /* MenuTableViewController.swift in Sources */,
+				EB75B8971EAC40F600DB4560 /* ProfileViewController.swift in Sources */,
 				EB6FAE2C1E9F06D700A53475 /* Tweet.swift in Sources */,
+				EB75B89B1EAC410F00DB4560 /* AccountsViewController.swift in Sources */,
+				EB75B8991EAC410400DB4560 /* MentionsViewController.swift in Sources */,
 				EB291FF51EA432F200548712 /* OnboardViewController.swift in Sources */,
 				EB48C60B1EA05A9400302AB2 /* Date+ext.swift in Sources */,
 				EBF23EF31EA1D51F00E1E746 /* ComposeTweetViewController.swift in Sources */,
@@ -612,6 +640,7 @@
 				00FB66811E9D16C7005D39B3 /* AppDelegate.swift in Sources */,
 				EB48C6011EA046D300302AB2 /* TwitterClient2.swift in Sources */,
 				EB48C61B1EA07B0F00302AB2 /* TweetDetailViewController.swift in Sources */,
+				EB75B89D1EAC44AB00DB4560 /* HamburgerViewController.swift in Sources */,
 				EB7221491EA317EE0003CF80 /* UIColor+ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,6 +795,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = U6H8QF8EBV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FontAwesome.swift",
@@ -787,6 +817,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = U6H8QF8EBV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FontAwesome.swift",

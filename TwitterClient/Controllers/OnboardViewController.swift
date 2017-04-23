@@ -16,16 +16,21 @@ class OnboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Login"
         loginButton.tintColor = UIColor.white
         loginButton.setFAText(prefixText: "Signin with Twitter  ", icon: FAType.FATwitter, postfixText: "", size: 25, forState: .normal)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {        
         
         if TwitterClient.shared.isSignedIn() {
-            self.navigationController?.popToRootViewController(animated: false)
+            
+            if let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController, let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController {
+
+                hamburgerVC.contentViewController = timelineVC
+            }
         }
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        print("onboard vc will move to parent: \(parent?.title)")
     }
     
     @IBAction func didTapLoginButton(_ sender: Any) {

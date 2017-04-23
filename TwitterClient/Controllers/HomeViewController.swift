@@ -54,14 +54,16 @@ class HomeViewController: UIViewController {
     private func verifyLoginStatus() {
         
         if !TwitterClient.shared.isSignedIn() {
-            if let onboardVC = storyboard?.instantiateViewController(withIdentifier: "OnboardVC") as? OnboardViewController {
-               present(onboardVC, animated: false, completion: nil)
+            if let onboardVC = mainStoryBoard.instantiateViewController(withIdentifier: "OnboardVC") as? OnboardViewController, let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController {
+//               present(onboardVC, animated: false, completion: nil)
+                hamburgerVC.contentViewController = onboardVC
             }
         }
     }
     
     private func initPhase2() {
         
+        self.title = "Home Timelines"
         composeButton.setFAText(prefixText: "", icon: FAType.FATwitter, postfixText: " Tweet", size: 17)
         
         tableView.dataSource = self
@@ -88,15 +90,18 @@ class HomeViewController: UIViewController {
             tweets.removeAll() // remove all the items, if any
         }
         
-        TwitterClient.shared.getHomeTimeLine(maxId: maxId, success: { [weak self] (tweets) in
-            self?.isLoadingMoreTweets = false
-            self?.refreshControl.endRefreshing()
-            self?.tweets += tweets
-            self?.tableView.reloadData()
-            self?.lowestTweetId = tweets.map {
-                return $0.id as Int64!
-                }.min()
-//            print("lowestTweetId: \(self?.lowestTweetId as Int64!)")
+        TwitterClient.shared.getHomeTimeLine(maxId: maxId, success: { [weak self] (tweets) in            
+            
+            DispatchQueue.main.async {
+                self?.isLoadingMoreTweets = false
+                self?.refreshControl.endRefreshing()
+                self?.tweets += tweets
+                self?.tableView.reloadData()
+                self?.lowestTweetId = tweets.map {
+                    return $0.id as Int64!
+                    }.min()
+            }
+
         }) { (error) in
             NSLog("error: \(error)")
         }

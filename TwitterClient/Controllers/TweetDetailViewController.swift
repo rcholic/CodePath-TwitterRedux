@@ -15,7 +15,7 @@ class TweetDetailViewController: UIViewController, TweetViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Tweet Detail"
         if let twt = tweet {
             tweetView.tweet = twt // use twt as temporary placeholder
             tweetView.delegate = self

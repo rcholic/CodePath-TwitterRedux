@@ -74,8 +74,8 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             var results: [Tweet] = []
             if let tweets = Mapper<Tweet>().mapArray(JSONObject: json.arrayObject) {
                 for tweet in tweets {
-                    print("tweet.user: \(tweet.author?.name)")
-                    print("tweet created at: \(tweet.createdAt)")
+                    NSLog("tweet.user: \(tweet.author?.name)")
+//                    print("tweet created at: \(tweet.createdAt)")
                     results = tweets
                 }
             }

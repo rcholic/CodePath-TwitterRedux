@@ -12,18 +12,28 @@ import BDBOAuth1Manager
 import SwiftyJSON
 import ObjectMapper
 
+public let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let navbarAppearance = UINavigationBar.appearance()
         navbarAppearance.barTintColor = TWITTER_BLUE
         navbarAppearance.tintColor = UIColor.white
+        
+//        let hamburgerVC = window!.rootViewController as! HamburgerViewController
+        let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as! HamburgerViewController
+        hamburgerVC.title = "Twitter Client"
+        self.window?.rootViewController = UINavigationController(rootViewController: hamburgerVC) // convert hamburgerVC to a navigation controller
+        let menuVC = mainStoryBoard.instantiateViewController(withIdentifier: "MenuVC") as! MenuTableViewController
+        
+        // FIXME: bad: tight coupling, as a temporary solution
+        menuVC.hamburgerVC = hamburgerVC // this has to be first
+        hamburgerVC.menuViewController = menuVC        
         
         return true
     }
@@ -51,10 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let curUser = twtUser, let jsonStr = curUser.toJSONString() {
                     _ = DataManager.shared.save(jsonStr, for: DataKey.twitterUser)
                 }
-                if let homeVC = self?.mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
+                
+                if let hamburgerVC = mainStoryBoard.instantiateViewController(withIdentifier: "HamburgerVC") as? HamburgerViewController, let timelineVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController {
 
-                    let nav = UINavigationController(rootViewController: homeVC)
-                    self?.window?.rootViewController = nav
+                    hamburgerVC.contentViewController = timelineVC
+                    self?.window?.rootViewController = hamburgerVC
                 }
 
             }, failure: { (error) in

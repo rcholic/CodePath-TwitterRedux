@@ -29,7 +29,9 @@ public let TWT_BASE_URL = URL(string: TWT_BASE_HTTP_PATH)!
 
 public let inactiveTint = UIColor.gray
 
-public let TWT_CHARACTERS_LIMIT = 140
+public let TWT_CHARACTERS_LIMIT: Int = 140
+
+public let NAVBAR_HEIGHT: CGFloat = 60
 
 public let TWT_DATE_FORMAT = "EEE MMM d HH:mm:ss Z y"
 
