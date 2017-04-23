@@ -57,14 +57,12 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // MARK: - Table view data source
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return menus.count
     }
     
@@ -81,8 +79,12 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vcName = menus[indexPath.row]
-        
-        self.hamburgerVC.contentViewController = menuVC[vcName] // show the targetVC in the content view
+        if vcName == "Profile" {
+            self.hamburgerVC.navigationController?.pushViewController(menuVC[vcName]!, animated: true)
+        } else {
+//        self.hamburgerVC.contentViewController = menuVC[vcName]
+            self.hamburgerVC.present(menuVC[vcName]!)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
