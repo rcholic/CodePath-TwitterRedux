@@ -26,7 +26,8 @@ class ProfileViewController: UIViewController, TweetListViewDelegate, UIScrollVi
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
     
-//    TODO: get the user's updated profile?
+//    TODO: get the user's updated profile
+//    TODO: add blurry effect to the background profile image when user drags down the view
     
     var author: TwitterUser? = nil
     
@@ -136,9 +137,10 @@ class ProfileViewController: UIViewController, TweetListViewDelegate, UIScrollVi
         pageControl.currentPage = Int(currengPage)
         
         if Int(currengPage) == 0 {
-            textView.text = curUser?.tagline ?? "Sample Tag Line for users without description"
+            let text = curUser?.tagline ?? "Sample Tag Line for users without description"
+            textView.text = text[0..<25]
         } else if Int(currengPage) == 1 {
-            textView.text = "Second Page of Sample Tagline!"
+            textView.text = "Sample Tagline!"
         }
         
         
