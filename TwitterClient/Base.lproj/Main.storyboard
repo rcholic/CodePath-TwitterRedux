@@ -292,9 +292,32 @@
                     <view key="view" contentMode="scaleToFill" id="Cbt-0s-qz2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fGd-Rv-wOO">
+                                <rect key="frame" x="0.0" y="64" width="375" height="301"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjk-L8-hJG">
+                                <rect key="frame" x="0.0" y="363" width="375" height="112"/>
+                                <color key="backgroundColor" red="0.80392158030000005" green="0.80392158030000005" blue="0.80392158030000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="79"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xjk-L8-hJG" firstAttribute="top" secondItem="fGd-Rv-wOO" secondAttribute="bottom" id="NlQ-49-wUB"/>
+                            <constraint firstItem="c8m-6C-vf9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xjk-L8-hJG" secondAttribute="bottom" id="ScI-od-a91"/>
+                            <constraint firstItem="Xjk-L8-hJG" firstAttribute="leading" secondItem="Cbt-0s-qz2" secondAttribute="leading" id="YYE-IA-bw0"/>
+                            <constraint firstAttribute="trailing" secondItem="Xjk-L8-hJG" secondAttribute="trailing" id="etT-Wh-Ghp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Acconts" id="tMi-Bq-HDf"/>
+                    <connections>
+                        <outlet property="plusLabel" destination="Xjk-L8-hJG" id="n8k-Vt-iUN"/>
+                        <outlet property="tableView" destination="fGd-Rv-wOO" id="VPm-So-SdU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDT-Za-dW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

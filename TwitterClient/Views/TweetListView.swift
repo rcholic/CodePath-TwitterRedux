@@ -98,11 +98,7 @@ class TweetListView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @objc private func refreshView(sender: UIRefreshControl) {
         delegate?.tweetListView(self, didRefresh: true, callback: { 
-            DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-            }
+            self.refreshControl.endRefreshing()
         })
     }
-    
-    
 }

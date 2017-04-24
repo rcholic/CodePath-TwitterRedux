@@ -92,15 +92,22 @@ class ProfileViewController: UIViewController, TweetListViewDelegate, UIScrollVi
         textView.frame = CGRect(origin: scrollView.frame.origin, size: CGSize(width: scrollViewWidth, height: scrollViewHeight))
         textView.backgroundColor = UIColor.clear
         textView.textAlignment = .center
-        textView.text = curUser?.tagline ?? "This is a sample description of the user"
+        textView.text = "User Tag Line"
+//        textView.text = curUser?.tagline ?? "This is a sample description of the user"
         textView.textColor = .black
         pageControl.currentPage = 0
     }
     
     private func loadTimelinesFor(_ user: TwitterUser, _ callback: (() -> Void)? = nil) {
-        let username = user.name ?? user.screenName
+
+        var name = ""
+        if let username = user.name {
+            name = username
+        } else {
+            name = user.screenName ?? "johndoe"
+        }
         
-        SVProgressHUD.showInfo(withStatus: "Loading \(username)'s Tweets For You)")        
+        SVProgressHUD.showInfo(withStatus: "Loading \(name)'s Tweets For You)")
         TwitterClient.shared.getTimelinesFor(screenName: user.screenName, count: 200, success: { (tweets) in
 
             DispatchQueue.main.async {
@@ -137,8 +144,10 @@ class ProfileViewController: UIViewController, TweetListViewDelegate, UIScrollVi
         pageControl.currentPage = Int(currengPage)
         
         if Int(currengPage) == 0 {
-            let text = curUser?.tagline ?? "Sample Tag Line for users without description"
-            textView.text = text[0..<25]
+            var text = curUser?.tagline ?? "Sample Tag Line for users without description"
+            text = text[0..<25]
+            text = text.isEmpty ? "First Sample" : text
+            textView.text = text
         } else if Int(currengPage) == 1 {
             textView.text = "Sample Tagline!"
         }

@@ -70,7 +70,7 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = menus[indexPath.row]
-        cell.textLabel?.textColor = UIColor.black
+        cell.textLabel?.textColor = UIColor.white
         cell.backgroundColor = UIColor.clear
 //        cell.contentView.backgroundColor = UIColor.clear
         return cell
@@ -82,7 +82,6 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         if vcName == "Profile" {
             self.hamburgerVC.navigationController?.pushViewController(menuVC[vcName]!, animated: true)
         } else {
-//        self.hamburgerVC.contentViewController = menuVC[vcName]
             self.hamburgerVC.present(menuVC[vcName]!)
         }
     }

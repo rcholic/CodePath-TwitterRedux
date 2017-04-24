@@ -1,61 +1,61 @@
-# Project 3 - *Tony's Awesome Twitter Client*
+# Project 4 - *Enhanced Twitter Redux App*
 
-**Tony's Awesome Twitter Client** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
-
-Time spent: **12** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [x] User can sign in using OAuth login flow.
-- [x] User can view last 20 tweets from their home timeline.
-- [x] The current signed in user will be persisted across restarts.
-- [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.  In other words, design the custom cell with the proper Auto Layout settings.  You will also need to augment the model classes.
-- [x] User can pull to refresh.
-- [x] User can compose a new tweet by tapping on a compose button.
-- [x] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
+- [x] Hamburger menu
+   - [x] Dragging anywhere in the view should reveal the menu.
+   - [x] The menu should include links to your profile, the home timeline, and the mentions view.
+   - [x] The menu can look similar to the example or feel free to take liberty with the UI.
+- [x] Profile page
+   - [x] Contains the user header view
+   - [x] Contains a section with the users basic stats: # tweets, # following, # followers
+- [x] Home Timeline
+   - [x] Tapping on a user image should bring up that user's profile page
 
 The following **optional** features are implemented:
 
-- [x] When composing, you should have a countdown in the ~~upper~~ lower right for the tweet limit.
-- [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
-- [x] Retweeting and favoriting should increment the retweet and favorite count.
-- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-- [x] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
-- [x] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+- [x] Profile Page
+   - [x] Implement the paging view for the user description.
+   - [ ] As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
+   - [ ] Pulling down the profile page should blur and resize the header image.
+- [ ] Account switching
+   - [ ] Long press on tab bar to bring up Account view with animation
+   - [ ] Tap account to switch to
+   - [ ] Include a plus button to Add an Account
+   - [ ] Swipe to delete an account
+
 
 The following **additional** features are implemented:
 
-- [x] Customized *TweetView* class by extending from super class *UIView*, which is reusable
-- [x] Tweeting and Replying to a tweet use the same *ComposeTweetViewController*, but the presentation for *Reply* is customized to show the original tweet so that the user has a context for writing their reply
-
-To Do:
-====
-- [x] Place a backdrop/shadow view on the original tweet when the user is composing their reply, this will help them focus on their writing!
-- [x] Add animations to the **Favorite** and **Retweet** buttons in Tweet Detail View, imitating the "popping" effect in the Twitter app
+- [x] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. Saving the user's access token in Keychain for security!
-2. Adding pull from top and pull from bottom to refresh the table of tweets!
+  1. Button animations such as popping effect when user taps on the **Favorite** button for a tweet
+  2. Add elastic effect when closing the side menu
+  3. Cast a backdrop to dim the content view when the side menu slides out, this will help user to focus on the menu visually
+
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![](./screencast/screen2.gif)
-
 ![](./screencast/screen1.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-I was originally thinking about using **Alamofire** and the associates routes to make Twitter API calls after the user is authenticated through *OAuth*, because that way I can use the library **PromiseKit** when making asynch calls. However, that will take me more time and efforts, and given that my daughter is having her spring break from school, I would like to shift my time a bit for spending with her :icecream::tada:
+Time was the most precious commodity in this week, so I feel rushed when implementing/building off my Week 3 App for this assignment. If I had more time, I believe I could have put in more efforts to make the UI look greater!
 
 ## License
 
 The MIT License
-Copyright (c) [Tony Wang] https://github.com/rcholic/CodePath-TwitterClient
+Copyright (c) [Tony Wang] https://github.com/rcholic/CodePath-TwitterRedux
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -38,6 +38,8 @@
 		EB6D43E51EAD4D3D00DBA9DB /* defaultBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = EB6D43E41EAD4D3D00DBA9DB /* defaultBackground.png */; };
 		EB6D43E71EAD6DC200DBA9DB /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB6D43E61EAD6DC200DBA9DB /* SVProgressHUD.framework */; };
 		EB6D43E91EAD843900DBA9DB /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6D43E81EAD843900DBA9DB /* String+ext.swift */; };
+		EB6D43EC1EAD896B00DBA9DB /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6D43EA1EAD896B00DBA9DB /* AccountTableViewCell.swift */; };
+		EB6D43ED1EAD896B00DBA9DB /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6D43EB1EAD896B00DBA9DB /* AccountTableViewCell.xib */; };
 		EB6FAE2B1E9F06D700A53475 /* BaseJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE281E9F06D700A53475 /* BaseJsonModel.swift */; };
 		EB6FAE2C1E9F06D700A53475 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE291E9F06D700A53475 /* Tweet.swift */; };
 		EB6FAE2D1E9F06D700A53475 /* TwitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FAE2A1E9F06D700A53475 /* TwitterUser.swift */; };
@@ -119,6 +121,8 @@
 		EB6D43E41EAD4D3D00DBA9DB /* defaultBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultBackground.png; sourceTree = "<group>"; };
 		EB6D43E61EAD6DC200DBA9DB /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		EB6D43E81EAD843900DBA9DB /* String+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
+		EB6D43EA1EAD896B00DBA9DB /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		EB6D43EB1EAD896B00DBA9DB /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		EB6FAE281E9F06D700A53475 /* BaseJsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseJsonModel.swift; sourceTree = "<group>"; };
 		EB6FAE291E9F06D700A53475 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		EB6FAE2A1E9F06D700A53475 /* TwitterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterUser.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				EB291FEC1EA41E9800548712 /* TweetCell2.swift */,
 				EB291FED1EA41E9800548712 /* TweetCell2.xib */,
 				EB6D43E21EAD40C600DBA9DB /* TweetListView.swift */,
+				EB6D43EA1EAD896B00DBA9DB /* AccountTableViewCell.swift */,
+				EB6D43EB1EAD896B00DBA9DB /* AccountTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB291FFE1EA43B3E00548712 /* twitterbg.jpg in Resources */,
+				EB6D43ED1EAD896B00DBA9DB /* AccountTableViewCell.xib in Resources */,
 				00FB668B1E9D16C7005D39B3 /* LaunchScreen.storyboard in Resources */,
 				EB291FEF1EA41E9800548712 /* TweetCell2.xib in Resources */,
 				00FB66881E9D16C7005D39B3 /* Assets.xcassets in Resources */,
@@ -637,6 +644,7 @@
 				EB6FAE321E9F06E100A53475 /* TwitterClient.swift in Sources */,
 				EB6FAE2B1E9F06D700A53475 /* BaseJsonModel.swift in Sources */,
 				EB75B89F1EAC4F5900DB4560 /* MenuTableViewController.swift in Sources */,
+				EB6D43EC1EAD896B00DBA9DB /* AccountTableViewCell.swift in Sources */,
 				EB75B8971EAC40F600DB4560 /* ProfileViewController.swift in Sources */,
 				EB6FAE2C1E9F06D700A53475 /* Tweet.swift in Sources */,
 				EB75B89B1EAC410F00DB4560 /* AccountsViewController.swift in Sources */,
