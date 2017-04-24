@@ -51,6 +51,8 @@ class TweetListView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func commontInit() {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         tableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
         self.addSubview(tableView)
         

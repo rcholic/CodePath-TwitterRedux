@@ -67,7 +67,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
         
         get("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: AFHTTPRequestOperation, response) in
-            print("response: \(response)")
+//            print("response: \(response)")
             
             let json = JSON(response)
             var results: [Tweet] = []

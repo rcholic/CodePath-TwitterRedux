@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import SVProgressHUD
 
-class ProfileViewController: UIViewController, TweetListViewDelegate {
+class ProfileViewController: UIViewController, TweetListViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var profileBgImageView: UIImageView!
     @IBOutlet weak var profileAvatarImageView: UIImageView!
@@ -20,6 +20,11 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var tweetsCountLabel: UILabel!
+    
+    @IBOutlet weak var scrollViewContainer: UIView!    
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var textView: UITextView!
     
 //    TODO: get the user's updated profile?
     
@@ -57,6 +62,7 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initPhase2()
+        setupScrollview()
     }
     
     private func initPhase2() {
@@ -71,6 +77,23 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
         profileAvatarImageView.layer.borderColor = UIColor.lightGray.cgColor
         
         tweetListView.delegate = self
+    }
+    
+    private func setupScrollview() {
+
+        let scrollViewHeight = scrollView.frame.size.height
+        let scrollViewWidth = scrollView.frame.size.width
+        scrollView.contentSize = CGSize(width: scrollViewWidth * 2, height: scrollViewHeight) // set the content size
+        scrollView.delegate = self
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        
+        textView.frame = CGRect(origin: scrollView.frame.origin, size: CGSize(width: scrollViewWidth, height: scrollViewHeight))
+        textView.backgroundColor = UIColor.clear
+        textView.textAlignment = .center
+        textView.text = curUser?.tagline ?? "This is a sample description of the user"
+        textView.textColor = .black
+        pageControl.currentPage = 0
     }
     
     private func loadTimelinesFor(_ user: TwitterUser, _ callback: (() -> Void)? = nil) {
@@ -104,5 +127,20 @@ class ProfileViewController: UIViewController, TweetListViewDelegate {
         if didRefresh, let user = curUser {
             loadTimelinesFor(user, callback)
         }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageWidth = scrollView.frame.width // Test the offset and calculate the current page after scrolling ends
+        let currengPage: CGFloat = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1
+        // change the indicator
+        pageControl.currentPage = Int(currengPage)
+        
+        if Int(currengPage) == 0 {
+            textView.text = curUser?.tagline ?? "Sample Tag Line for users without description"
+        } else if Int(currengPage) == 1 {
+            textView.text = "Second Page of Sample Tagline!"
+        }
+        
+        
     }
 }
